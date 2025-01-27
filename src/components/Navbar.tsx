@@ -1,75 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { LuArrowRight } from "react-icons/lu";
 import { links } from "../../lib/data";
 
 const Navbar = () => {
-  const [clicked, setClicked] = useState<string | null>(null);
-
   return (
-    <header className="z-[9999]">
-      <nav className="fixed top-[1.5rem] left-1/2 -translate-x-1/2 flex gap-8 mt-16 z-[9999]">
+    <header className="z-[9999] fixed top-0 left-0 w-full bg-gray-700 py-4 shadow-md bg-opacity-0 translate-y-7">
+      <nav className="flex justify-center gap-8">
         {links.map((link) => (
           <motion.div
             key={link.href}
-            className="rounded-full border-[2px] border-gray-300 bg-gradient-to-r from-blue-900 to-blue-800 
-            shadow-lg shadow-black hover:shadow-lg text-center transition-all duration-300 ease-in-out"
+            className="rounded-full bg-gray-600 bg-opacity-40 
+            shadow-xl text-center transition-all duration-300 ease-in-out"
             style={{
               width: "9rem",
               height: "3.5rem",
-              zIndex: clicked === link.href ? 10000 : "auto",
+              transformOrigin: "center",
+              backdropFilter: "blur(10px)", // Glassmorphism effect
+              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)", // Default shadow
             }}
             whileHover={{
               scale: 1.1,
-              boxShadow: "0px 10px 30px rgba(59, 130, 246, 0.6)",
-              background: "linear-gradient(to right, #1e3a8a, #1d4ed8)", // Darker hover effect
+              background: "rgba(50, 50, 50, 0.5)", // Slightly darker on hover
+              boxShadow: `
+                0px 15px 40px rgba(0, 0, 0, 0.3),  /* Darker shadow */
+                0px 0px 15px rgba(255, 255, 255, 0.4) /* Light white shadow */
+              `, // Add white shadow
             }}
             whileTap={{ scale: 0.95 }}
-            animate={
-              clicked === link.href
-                ? {
-                    scale: 50,
-                    borderRadius: "0%",
-                    position: "fixed",
-                    top: "50%",
-                    left: "50%",
-                    translateX: "-50%",
-                    translateY: "-50%",
-                    width: "100vw",
-                    height: "100vh",
-                    background: "linear-gradient(to right, #1e3a8a, #1d4ed8)",
-                  }
-                : {}
-            }
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            onClick={() => setClicked(link.href)}
           >
-            <Link
-              href={link.href}
-              className="flex items-center justify-start pl-4 h-full w-full text-white font-semibold text-[0.95rem] 
-            hover:text-gray-100"
-              onClick={(e) => {
-                e.preventDefault();
-                setClicked(link.href);
-                setTimeout(() => {
-                  window.location.href = link.href;
-                }, 800); // Delay redirection until animation completes
-              }}
+            <a
+              href={`#${link.href}`}
+              className="flex items-center justify-center h-full w-full text-gray-100 font-semibold text-[0.95rem] 
+            hover:text-white"
             >
               <span>{link.name}</span>
-              <motion.div
-                className="ml-auto pr-4"
-                whileHover={{
-                  x: 5,
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <LuArrowRight size={18} />
-              </motion.div>
-            </Link>
+            </a>
           </motion.div>
         ))}
       </nav>

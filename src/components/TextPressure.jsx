@@ -1,6 +1,8 @@
 'use client '
 
 import { useEffect, useRef, useState } from 'react';
+import { Staatliches } from "next/font/google";
+
 
 const TextPressure = ({
   text = 'Compressa',
