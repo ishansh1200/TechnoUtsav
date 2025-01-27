@@ -9,7 +9,7 @@ export const links = [
     },
     {
         name: "Events",
-        href: "/events", 
+        href: "/Events", 
     },
     {
         name: "Sponsors",
