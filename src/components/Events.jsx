@@ -1,60 +1,91 @@
-import React from 'react'
+'use client'
+
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import EventCard from './EventCard';
 import EventDetails from './EventDetails';
 import { events } from '../data/events';
 
-
 function Events() {
-    return (
-        <Router>
+  return (
+    <Router>
       <Routes>
-        <Route path="/" element={
-          
-          <div className="min-h-screen w-[100%] bg-gradient-to-br from-gray-900 via-violet-900/20 to-gray-900 text-white bg-black " >
-            
-            <div className="container mx-auto px-4 py-12">
-              <motion.div
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, type: "spring" }}
-                className="text-center mb-12 pb-10 m"
-              >
-                <h1 className="text-5xl  font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-200 mb-5">
-                  Tech Events
-                </h1>
-                <p className="text-violet-300 text-lg mb-7">Discover the Future of Technology</p>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-36 lg:gap-y-36  gap-y-20 gap-x-5 sm:gap-x-1
-                            px-15 sm:px-4  md:px-5 lg:px-20 -translate-x-13"
-              >
-                {events.map((event, index) => (
-                  <motion.div
-                    key={event.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <EventCard event={event} />
-                    
-                  </motion.div>
-                ))}
-              </motion.div>
+        <Route
+          path="/"
+          element={
+            <div className="min-h-screen w-[100%] text-white">
+              <div className="container mx-auto px-4 py-12">
+                {/* Header Animation */}
+                <motion.div
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, type: 'spring' }}
+                  className="text-center mb-12 pb-10"
+                >
+                  <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
+                  from-violet-400 to-violet-200 mb-5">
+                    Tech Events
+                  </h1>
+                  <p className="text-violet-300 text-lg mb-7">
+                    Discover the Future of Technology
+                  </p>
+                </motion.div>
+
+                {/* Event Cards with Scroll Animation */}
+                <div
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
+                  lg:gap-x-36 lg:gap-y-36 gap-y-20 gap-x-5 sm:gap-x-1 px-15 sm:px-4 md:px-5 lg:px-20 -translate-x-13"
+                >
+                  {events.map((event, index) => (
+                    <ScrollAnimationWrapper key={event.id} index={index}>
+                      <EventCard event={event} />
+                    </ScrollAnimationWrapper>
+                  ))}
+                </div>
+              </div>
             </div>
-          
-          </div>
-        } />
-        
+          }
+        />
         <Route path="/event/:id" element={<EventDetails />} />
       </Routes>
     </Router>
-    )
+  );
 }
 
-export default Events
+// Component for wrapping the scroll animation logic
+function ScrollAnimationWrapper({ children, index }) {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const direction = index % 2 === 0 ? -100 : 100; // Alternate left (-100) and right (100)
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{
+        opacity: 0,
+        x: direction,
+        filter: 'blur(10px)',
+      }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              x: 0,
+              filter: 'blur(0px)',
+            }
+          : {}
+      }
+      transition={{
+        duration: 0.8,
+        delay: 0.01, // Staggered animation
+        ease: 'easeOut',
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export default Events;

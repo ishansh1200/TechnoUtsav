@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ShapeBlur from "./ShapeBlur";
 
 // Map the `img` keys to the image paths
 const eventImages = {
@@ -15,7 +16,13 @@ const EventCard = ({ event }) => {
   const eventImage = eventImages[event.img]; // Use `event.img` to select the correct image
 
   return (
-    <div className="relative flex w-80 lg:w-[50vh] h-[55vh] flex-col rounded-xl bg-white text-gray-700 shadow-md">
+    <motion.div
+      className="relative flex w-80 lg:w-[50vh] h-[55vh] flex-col rounded-xl bg-gray-500 opacity-85 text-white transition-all duration-300"
+      whileHover={{
+        boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.2)",
+        scale: 1.05,
+      }}
+    >
       {/* Image Section */}
       <motion.div
         className="relative mx-4 -mt-6 h-40 bg-white flex justify-center items-center rounded-xl shadow-lg"
@@ -32,14 +39,24 @@ const EventCard = ({ event }) => {
       </motion.div>
 
       {/* Text Content */}
-      <div className="p-6">
-        <h5 className="mb-2 text-xl font-semibold text-blue-gray-900">
+      <motion.div
+        className="p-6"
+        whileHover={{
+          scale: 1.03,
+        }}
+        transition={{
+          duration: 0.3,
+        }}
+      >
+        <motion.h5
+          className="mb-2 text-xl font-semibold text-blue-gray-900"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+        >
           {event.title}
-        </h5>
-        <p className="text-base font-light text-inherit">
-          {event.shortDescription}
-        </p>
-      </div>
+        </motion.h5>
+        <p className="text-base font-light text-inherit">{event.shortDescription}</p>
+      </motion.div>
 
       {/* Action Section */}
       <div className="mb-5 mt-10 flex justify-center items-center">
@@ -51,7 +68,7 @@ const EventCard = ({ event }) => {
           {event.date}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

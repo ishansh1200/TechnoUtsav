@@ -6,19 +6,26 @@ import { links } from "../../lib/data";
 
 const Navbar = () => {
   return (
-    <header className="z-[9999] fixed top-0 left-0 w-full bg-gray-700 py-4 shadow-md bg-opacity-0 translate-y-7">
-      <nav className="flex justify-center gap-8">
+    <motion.header
+      className="z-[9999] fixed top-0 left-0 w-full bg-gray-800 py-4 bg-opacity-0"
+      initial={{ y: -100 }} // Start off-screen (above the viewport)
+      animate={{ y: 0 }} // Animate to its natural position
+      transition={{
+        type: "spring", // Spring effect for the bounce
+        stiffness: 120, // Controls the "bounciness"
+        damping: 15, // Controls the spring settling
+      }}
+    >
+      <nav className="flex justify-center gap-8 translate-y-5">
         {links.map((link) => (
           <motion.div
             key={link.href}
-            className="rounded-full bg-gray-600 bg-opacity-40 
+            className="rounded-full bg-gray-600 bg-opacity-50
             shadow-xl text-center transition-all duration-300 ease-in-out"
             style={{
               width: "9rem",
               height: "3.5rem",
               transformOrigin: "center",
-              backdropFilter: "blur(10px)", // Glassmorphism effect
-              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)", // Default shadow
             }}
             whileHover={{
               scale: 1.1,
@@ -40,7 +47,7 @@ const Navbar = () => {
           </motion.div>
         ))}
       </nav>
-    </header>
+    </motion.header>
   );
 };
 
