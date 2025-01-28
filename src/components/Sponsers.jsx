@@ -4,7 +4,7 @@ import {
     TextRevealCard,
     TextRevealCardDescription,
     TextRevealCardTitle,
-  } from "./ui/text-reveal-card";
+} from "./ui/text-reveal-card";
 
 function Sponsers() {
     return (
