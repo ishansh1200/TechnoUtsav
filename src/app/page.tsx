@@ -5,6 +5,7 @@ import Waves from "./Waves";
 import TextBox from "@/components/TextBox";
 import { motion } from "framer-motion";
 import Events from "@/components/Events"
+import Sponsors from "@/components/Sponsers"
 
 export default function Home() {
   return (
@@ -55,6 +56,7 @@ export default function Home() {
         </motion.div>
       </motion.div>
       <Events />
+      <Sponsors />
     </div>
   );
 }
