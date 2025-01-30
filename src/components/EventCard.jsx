@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -31,7 +32,7 @@ const EventCard = ({ event }) => {
           src={eventImage}
           alt={event.title}
           className="w-full h-full object-cover rounded-xl"
-          width={320}
+          width={320}a
           height={160}
         />
       </motion.div>
@@ -46,8 +47,12 @@ const EventCard = ({ event }) => {
 
       {/* Action Section */}
       <div className="mb-5 mt-10 flex justify-center items-center">
-        {/* Replace Link with a regular button or anchor tag */}
-        <StyledButton className="mr-10">Read More</StyledButton>
+        {/* Read More button using Next.js Link */}
+        <Link href="/aboutpage" passHref legacyBehavior>
+          <StyledButton target="_blank" rel="noopener noreferrer" className="mr-10">
+            Read More
+          </StyledButton>
+        </Link>
 
         <span className="text-sm px-4 py-2 border-2 border-black rounded-lg text-black">
           {event.date}
@@ -59,7 +64,8 @@ const EventCard = ({ event }) => {
 
 export default EventCard;
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
+  display: inline-block;
   padding: 0.5rem 1rem;
   font-size: 14px;
   font-weight: bold;
@@ -70,6 +76,7 @@ const StyledButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 
   &:hover {
     background-color: gray;

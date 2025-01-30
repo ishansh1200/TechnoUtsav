@@ -1,24 +1,36 @@
-import { events } from '@/data/events';
+import React from 'react';
 
-export default function EventPage({ params }) {
-  const { id } = params;
-  const event = events.find((e) => e.id.toString() === id);
-
-  if (!event) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <h1 className="text-3xl font-bold text-red-500">Event Not Found</h1>
-      </div>
-    );
-  }
-
+const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-center px-10">
-      <h1 className="text-5xl font-bold text-blue-700 mb-4">{event.title}</h1>
-      <p className="text-lg text-gray-700 max-w-2xl">{event.description}</p>
-      <span className="mt-5 text-md font-semibold text-gray-600">
-        Date: {event.date}
-      </span>
+    <div className="min-h-screen flex items-center justify-center bg-white px-10">
+      <div className="flex flex-wrap w-full max-w-5xl gap-6">
+        {/* Event Name/ About event */}
+        <div className="w-1/3 bg-red-400 text-black p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold">Event</h2>
+          <p className="text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        {/* Prize pool */}
+        <div className="w-1/2 bg-green-300 text-black p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold">Prizes</h2>
+          <p className="text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        {/* Year */}
+        <div className="w-1/4 bg-yellow-300 text-black p-6 rounded-xl shadow-md text-center flex items-center justify-center font-bold text-xl">
+          2024
+        </div>
+
+        {/* Summary */}
+        <div className="w-2/5 bg-white border border-black p-6 rounded-xl shadow-md ">
+          <h2 className="text-2xl font-bold">Our Summary</h2>
+          <p className="text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+
+      </div>
     </div>
   );
-}
+};
+
+export default Page;
