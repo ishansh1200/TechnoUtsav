@@ -6,7 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import Events from "@/components/Events";
 import Sponsors from "@/components/Sponsers";
 import { useEffect, useRef } from "react";
-import Waves from "./Waves"; // Import the Waves component
+import Waves from "./Waves"; 
 
 export default function Home() {
   const colors = [
@@ -97,7 +97,7 @@ export default function Home() {
           maxCursorMove={120}
           xGap={12}
           yGap={36}
-          className="opacity-35"
+          className="opacity-25"
         />
       </motion.div>
 

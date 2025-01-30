@@ -1,55 +1,41 @@
-'use client'
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import EventCard from './EventCard';
-import EventDetails from './EventDetails';
 import { events } from '../data/events';
 
 function Events() {
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="min-h-screen w-[100%] text-white">
-              <div className="container mx-auto px-4 py-12">
-                {/* Header Animation */}
-                <motion.div
-                  initial={{ opacity: 0, y: -50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, type: 'spring' }}
-                  className="text-center mb-12 pb-10"
-                >
-                  <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
-                  from-violet-400 to-violet-200 mb-5">
-                    Tech Events
-                  </h1>
-                  <p className="text-violet-300 text-lg mb-7">
-                    Discover the Future of Technology
-                  </p>
-                </motion.div>
+    <div className="min-h-screen w-[100%] text-white">
+      <div className="container px-20 py-25">
+        {/* Header Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, type: 'spring' }}
+          className="text-center mb-12 pb-10"
+        >
+          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
+          from-violet-400 to-violet-200 mb-5">
+            Tech Events
+          </h1>
+          <p className="text-violet-300 text-lg mb-7">
+            Discover the Future of Technology
+          </p>
+        </motion.div>
 
-                {/* Event Cards with Scroll Animation */}
-                <div
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
-                  lg:gap-x-36 lg:gap-y-36 gap-y-20 gap-x-5 sm:gap-x-1 px-15 sm:px-4 md:px-5 lg:px-20 -translate-x-13"
-                >
-                  {events.map((event, index) => (
-                    <ScrollAnimationWrapper key={event.id} index={index}>
-                      <EventCard event={event} />
-                    </ScrollAnimationWrapper>
-                  ))}
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <Route path="/event/:id" element={<EventDetails />} />
-      </Routes>
-    </Router>
+        {/* Event Cards with Scroll Animation */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
+          lg:gap-x-36 lg:gap-y-36 gap-y-20 gap-x-5 sm:gap-x-1 px-15 sm:px-4 md:px-5 lg:px-20 -translate-x-13"
+        >
+          {events.map((event, index) => (
+            <ScrollAnimationWrapper key={event.id} index={index}>
+              <EventCard event={event} />
+            </ScrollAnimationWrapper>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -58,7 +44,7 @@ function ScrollAnimationWrapper({ children, index }) {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const direction = index % 2 === 0 ? -100 : 100; // Alternate left (-100) and right (100)
+  const direction = index % 2 === 0 ? -100 : 100;
 
   return (
     <motion.div
@@ -79,7 +65,7 @@ function ScrollAnimationWrapper({ children, index }) {
       }
       transition={{
         duration: 0.8,
-        delay: 0.01, // Staggered animation
+        delay: 0.01,
         ease: 'easeOut',
       }}
     >

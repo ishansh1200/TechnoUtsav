@@ -1,25 +1,24 @@
-"use client";
+import { events } from '@/data/events';
 
-import React from "react";
-import { motion } from "framer-motion";
+export default function EventPage({ params }) {
+  const { id } = params;
+  const event = events.find((e) => e.id.toString() === id);
 
+  if (!event) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <h1 className="text-3xl font-bold text-red-500">Event Not Found</h1>
+      </div>
+    );
+  }
 
-const AboutPage = () => {
   return (
-    <motion.div
-      className="min-h-screen flex items-center justify-center bg-gray-100"
-      initial={{ scale: 1.3, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{
-        duration: 0.8,
-        ease: "easeOut",
-      }}
-    >
-      <h1 className="text-4xl font-bold text-blue-700">
-        Welcome to the About Page (Events)!
-      </h1>
-    </motion.div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-center px-10">
+      <h1 className="text-5xl font-bold text-blue-700 mb-4">{event.title}</h1>
+      <p className="text-lg text-gray-700 max-w-2xl">{event.description}</p>
+      <span className="mt-5 text-md font-semibold text-gray-600">
+        Date: {event.date}
+      </span>
+    </div>
   );
-};
-
-export default AboutPage;
+}
