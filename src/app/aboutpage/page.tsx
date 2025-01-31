@@ -18,7 +18,7 @@ const Page = () => {
 
         {/* Year */}
         <div className="w-1/4 bg-yellow-300 text-black p-6 rounded-xl shadow-md text-center flex items-center justify-center font-bold text-xl">
-          2024
+          2025
         </div>
 
         {/* Summary */}

@@ -1,7 +1,11 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { format } from 'date-fns'; // Ensure you have date-fns installed
 
 const eventImages = {
   1: "/images/1.jpeg",
@@ -12,6 +16,12 @@ const eventImages = {
 
 const EventCard = ({ event }) => {
   const eventImage = eventImages[event.img];
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    // Format the date on the client side
+    setFormattedDate(format(new Date(event.date), 'MMMM do, yyyy'));
+  }, [event.date]);
 
   return (
     <motion.div
@@ -32,7 +42,7 @@ const EventCard = ({ event }) => {
           src={eventImage}
           alt={event.title}
           className="w-full h-full object-cover rounded-xl"
-          width={320}a
+          width={320}
           height={160}
         />
       </motion.div>
@@ -55,7 +65,7 @@ const EventCard = ({ event }) => {
         </Link>
 
         <span className="text-sm px-4 py-2 border-2 border-black rounded-lg text-black">
-          {event.date}
+          {formattedDate}
         </span>
       </div>
     </motion.div>
