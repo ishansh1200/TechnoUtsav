@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import { links } from "../../lib/data";
 
 const Navbar = () => {
-
-
   return (
     <motion.header
       className="z-[9999] fixed top-0 left-0 w-full py-4"
