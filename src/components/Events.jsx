@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import EventCard from './EventCard';
-import { events } from '../data/events';
+import { events } from './data/events';
 
 function Events() {
   return (

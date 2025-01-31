@@ -5,7 +5,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { format } from 'date-fns'; // Ensure you have date-fns installed
+import { format } from 'date-fns';
 
 const eventImages = {
   1: "/images/1.jpeg",
