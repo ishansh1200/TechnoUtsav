@@ -5,19 +5,7 @@ import { motion } from "framer-motion";
 import { links } from "../../lib/data";
 
 const Navbar = () => {
-  const [bgOpacity, setBgOpacity] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = 300; // Adjust based on when you want full opacity
-      const opacity = Math.min(scrollTop / maxScroll, 0.5); // 0 to 0.5 opacity range
-      setBgOpacity(opacity);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <motion.header

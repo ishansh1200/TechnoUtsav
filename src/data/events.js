@@ -1,11 +1,3 @@
-const eventImages = {
-  1: "/images/1.jpeg",
-  2: "/images/2.jpeg",
-  3: "/images/3.jpeg",
-  4: "/images/4.jpeg",
-};
-
-
 export const events = [
   {
     id: 1,

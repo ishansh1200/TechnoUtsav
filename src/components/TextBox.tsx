@@ -1,10 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import bg7 from '../../lib/bg7.png';
 import TextPressure from './TextPressure';
-import { Staatliches } from "next/font/google";
 
 
 const TextBox = () => {
