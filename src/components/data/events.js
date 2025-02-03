@@ -1,5 +1,6 @@
 'use client'
 
+
 export const events = [
   {
     id: 1,
@@ -99,8 +100,12 @@ export const events = [
     duration: "6 hours",
     category: "AR/VR",
     img: 1,
+    link: '/src/app/routerrush/page.tsx'
   }
-];
+].map(event => ({
+  ...event,
+  link: `/${event.title.toLowerCase().replace(/\s+/g, '')}` // Generate link dynamically
+}));
 
 
 

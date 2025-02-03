@@ -3,18 +3,18 @@
 export const links = [
     {
         name: "Home",
-        href: "/", 
+        href: "home", 
     },
     {
         name: "Events",
-        href: "/Events", 
+        href: "eventdetails", 
     },
     {
         name: "Sponsors",
-        href: "/sponsors", 
+        href: "sponsors", 
     },
     {
         name: "Contact",
-        href: "/contact", 
+        href: "contact", 
     },
 ] as const;

@@ -1,13 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { links } from "../../lib/data";
 
 const Navbar = () => {
+  const controls = useAnimation(); // Controls for smooth scrolling
+
+  const handleScroll = async (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop;
+
+      await controls.start({
+        y: offsetTop * -1, // Scroll to the negative Y position
+        transition: { duration: 0.8, ease: "easeInOut" },
+      });
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth", // Ensures smooth scrolling even without animation
+      });
+    }
+  };
+
   return (
     <motion.header
       className="z-[9999] fixed top-0 left-0 w-full py-4"
-      style={{ backgroundColor: `rgba(31, 41, 55, opacity-0)` }} // Tailwind gray-800 with dynamic opacity
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{
@@ -38,6 +58,7 @@ const Navbar = () => {
           >
             <a
               href={`#${link.href}`}
+              onClick={(e) => handleScroll(e, link.href)} // Add click handler
               className="flex items-center justify-center h-full w-full text-gray-100 font-semibold text-[0.95rem] hover:text-white"
             >
               <span>{link.name}</span>

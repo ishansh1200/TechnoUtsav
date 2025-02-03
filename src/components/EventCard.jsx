@@ -1,11 +1,16 @@
-'use client'
+"use client"
 
 import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { format } from 'date-fns';
+import { Orbitron } from "next/font/google";  // Importing futuristic font
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 const eventImages = {
   1: "/images/1.jpeg",
@@ -19,52 +24,56 @@ const EventCard = ({ event }) => {
   const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
-    // Format the date on the client side
     setFormattedDate(format(new Date(event.date), 'MMMM do, yyyy'));
   }, [event.date]);
 
   return (
     <motion.div
-      className="relative flex w-70 lg:w-[45vh] h-[60vh] flex-col rounded-3xl bg-gray-500 opacity-85
-      text-white transition-all duration-300 "
+      className="relative flex w-80 lg:w-[50vh] h-[72vh] flex-col rounded-3xl bg-gray-500 opacity-100
+      text-white transition-all duration-300 ml-[-40px] mb-[-70px] items-center justify-between p-6"
       whileHover={{
         boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.2)",
-        scale: 1.1,
+        scale: 1.05,
       }}
     >
       {/* Image Section */}
       <motion.div
-        className="relative mx-4 mt-6 h-40 bg-white flex justify-center items-center rounded-xl shadow-lg"
+        className="relative w-full h-48 flex justify-center items-center rounded-3xl shadow-lg overflow-hidden"
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.3 }}
       >
         <Image
           src={eventImage}
           alt={event.title}
-          className="w-full h-full object-cover rounded-xl"
-          width={320}
-          height={160}
+          className="w-full h-full object-cover rounded-3xl"
+          width={360}
+          height={192}
         />
       </motion.div>
 
       {/* Text Content */}
-      <motion.div className="p-6">
-        <motion.h5 className="mb-2 text-xl font-semibold text-blue-gray-900">
+      <motion.div className="flex flex-col items-center justify-center text-center flex-grow px-4">
+        <motion.h5 
+          className={`${orbitron.className} text-2xl md:text-3xl font-bold text-white tracking-wide mb-3`}
+        >
           {event.title}
         </motion.h5>
-        <p className="text-base font-light">{event.shortDescription}</p>
+        <p className="text-lg font-light">{event.shortDescription}</p>
       </motion.div>
 
       {/* Action Section */}
-      <div className="mb-5 mt-10 flex justify-center items-center">
-        {/* Read More button using Next.js Link */}
-        <Link href="/aboutpage" passHref legacyBehavior>
-          <StyledButton target="_blank" rel="noopener noreferrer" className="mr-10">
-            Read More
-          </StyledButton>
+      <div className="mt-auto flex flex-col items-center space-y-4 pb-6">
+        <Link 
+          key={event.id} 
+          href={event.link}
+          className="px-6 py-3 text-md font-bold uppercase 
+                    text-white bg-black rounded-lg cursor-pointer transition-colors 
+                    duration-300 hover:bg-gray-800 text-center w-fit border-2 border-black"
+        >
+          Read More
         </Link>
 
-        <span className="text-sm px-4 py-2 border-2 border-black rounded-lg text-black">
+        <span className="text-md px-6 py-3 border-2 border-black rounded-lg text-black bg-white text-center w-fit">
           {formattedDate}
         </span>
       </div>
@@ -73,22 +82,3 @@ const EventCard = ({ event }) => {
 };
 
 export default EventCard;
-
-const StyledButton = styled.a`
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: white;
-  background-color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-
-  &:hover {
-    background-color: gray;
-  }
-`;
