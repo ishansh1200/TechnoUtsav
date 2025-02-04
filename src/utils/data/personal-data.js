@@ -7,7 +7,7 @@ export const personalData = {
   phone: '7303357810',
   address: 'Vivekananda Institute of Technology',
   github: 'https://github.com/said7388',
-  facebook: 'https://www.facebook.com/abusaid.riyaz/',
+  facebook: 'https://www.instagram.com/innovriti.vips',
   linkedIn: 'https://www.linkedin.com/in/abu-said-bd/',
   twitter: 'https://twitter.com/said7388',
   stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
