@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
+import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg23 from './backgrounds/bg23.jpg';
 
@@ -11,7 +12,12 @@ const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
 const Page = () => {
     return (
-        <div className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'>
+        <motion.div 
+            initial={{ opacity: 0, y: 50 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'
+        >
             <div className='absolute inset-0 -z-10'>
                 <Image
                     src={bg11}
@@ -25,7 +31,12 @@ const Page = () => {
             {/* Left Section */}
             <div className='flex-1 ml-16 mr-8 overflow-y-auto'>
                 {/* First Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'>
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'
+                >
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         ROBO SOCCER
                     </h1>
@@ -38,10 +49,15 @@ const Page = () => {
                             <li>The competition attracts a diverse range of participants, fostering a vibrant and collaborative environment that encourages creativity and inspires the next generation of robotics engineers.</li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Second Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg'>
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+                    className='bg-black bg-opacity-50 p-6 rounded-lg'
+                >
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         ADVANTAGES OF PARTICIPATING
                     </h1>
@@ -65,12 +81,16 @@ const Page = () => {
                             <li>Enthusiasm to learn and innovate in the field of robotics.</li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Right Section */}
-            <div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'>
-                {/* Top 20% with bg12 Image */}
+            <motion.div 
+                initial={{ opacity: 0, x: 100 }} 
+                animate={{ opacity: 1, x: 0 }} 
+                transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
+                className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'
+            >
                 <div className='h-[35%] relative mb-6'>
                     <Image
                         src={bg23}
@@ -81,7 +101,6 @@ const Page = () => {
                     />
                 </div>
 
-                {/* Content */}
                 <h1 className={`text-4xl font-bold text-red-500 mb-6 text-center ${audiowide.className}`}>
                     EVENT DETAILS
                 </h1>
@@ -103,15 +122,16 @@ const Page = () => {
                 <h3 className={`text-lg font-bold text-yellow-400 mb-10 ${orbitron.className}`}>
                     10:00am
                 </h3>
-
-                {/* Registration Button */}
                 <div className='space-y-4'>
-                    <button className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}>
+                    <motion.button 
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
+                    >
                         Registration Form
-                    </button>
+                    </motion.button>
                 </div>
-            </div>
-
+            </motion.div>
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
         ::-webkit-scrollbar {
@@ -134,7 +154,7 @@ const Page = () => {
         }
       `}
             </style>
-        </div>
+        </motion.div>
     );
 };
 

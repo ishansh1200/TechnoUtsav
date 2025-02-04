@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Orbitron, Audiowide } from 'next/font/google';
 import bg11 from './backgrounds/bg11.jpg';
 import bg15 from './backgrounds/bg15.jpg';
@@ -11,7 +12,12 @@ const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
 const Page = () => {
     return (
-        <div className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'>
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'
+        >
             <div className='absolute inset-0 -z-10'>
                 <Image
                     src={bg11}
@@ -115,29 +121,29 @@ const Page = () => {
                     </button>
                 </div>
             </div>
-
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
-                ::-webkit-scrollbar {
-                    width: 12px;
-                }
+        ::-webkit-scrollbar {
+          width: 12px;
+        }
 
-                ::-webkit-scrollbar-track {
-                    background: #1a1a1a;
-                    border-radius: 10px;
-                }
+        ::-webkit-scrollbar-track {
+          background: #1a1a1a;
+          border-radius: 10px;
+        }
 
-                ::-webkit-scrollbar-thumb {
-                    background: #00ffff;
-                    border-radius: 10px;
-                    border: 3px solid #1a1a1a;
-                }
+        ::-webkit-scrollbar-thumb {
+          background: #00ffff;
+          border-radius: 10px;
+          border: 3px solid #1a1a1a;
+        }
 
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #00cccc;
-                }
-            `}</style>
-        </div>
+        ::-webkit-scrollbar-thumb:hover {
+          background: #00cccc;
+        }
+      `}
+            </style>
+        </motion.div>
     );
 };
 

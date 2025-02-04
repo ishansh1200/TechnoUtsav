@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
+import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg21 from './backgrounds/bg21.jpg';
 
@@ -11,7 +12,12 @@ const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
 const Page = () => {
     return (
-        <div className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'>
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'
+        >
             <div className='absolute inset-0 -z-10'>
                 <Image
                     src={bg11}
@@ -25,7 +31,12 @@ const Page = () => {
             {/* Left Section */}
             <div className='flex-1 ml-16 mr-8 overflow-y-auto'>
                 {/* First Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'>
+                <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'
+                >
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         NO BUG ZONE
                     </h1>
@@ -40,10 +51,15 @@ const Page = () => {
                             <li>Develops critical skills needed for real-world software development.</li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Second Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg'>
+                <motion.div
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: 'easeOut' }}
+                    className='bg-black bg-opacity-50 p-6 rounded-lg'
+                >
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         ADVANTAGES OF PARTICIPATING
                     </h1>
@@ -57,23 +73,16 @@ const Page = () => {
                             <li>Win exciting prizes and earn recognition.</li>
                         </ul>
                     </div>
-                    <h2 className={`text-2xl font-bold text-cyan-400 mb-4 ${orbitron.className}`}>
-                        PARTICIPATION CRITERIA
-                    </h2>
-                    <div className='text-lg text-gray-300 mb-6'>
-                        <ul className='list-disc list-inside'>
-                            <li>Basic knowledge of programming (Python, Java, C++, etc.).</li>
-                            <li>Understanding of debugging techniques and logical problem-solving.</li>
-                            <li>Ability to work efficiently under time constraints.</li>
-                            <li>Open to individuals and teams (up to 3 members).</li>
-                        </ul>
-                    </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Right Section */}
-            <div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'>
-                {/* Top 20% with bg12 Image */}
+            <motion.div
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, ease: 'easeOut' }}
+                className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'
+            >
                 <div className='h-[35%] relative mb-6'>
                     <Image
                         src={bg21}
@@ -84,7 +93,6 @@ const Page = () => {
                     />
                 </div>
 
-                {/* Content */}
                 <h1 className={`text-4xl font-bold text-red-500 mb-6 text-center ${audiowide.className}`}>
                     EVENT DETAILS
                 </h1>
@@ -106,15 +114,15 @@ const Page = () => {
                 <h3 className={`text-lg font-bold text-yellow-400 mb-10 ${orbitron.className}`}>
                     10:00am
                 </h3>
-
-                {/* Registration Button */}
-                <div className='space-y-4'>
-                    <button className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}>
-                        Registration Form
-                    </button>
-                </div>
-            </div>
-
+                
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
+                >
+                    Registration Form
+                </motion.button>
+            </motion.div>
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
         ::-webkit-scrollbar {
@@ -137,7 +145,7 @@ const Page = () => {
         }
       `}
             </style>
-        </div>
+        </motion.div>
     );
 };
 

@@ -3,15 +3,36 @@
 import React from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
+import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg18 from './backgrounds/bg18.jpg';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.3
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50 } }
+};
+
 const Page = () => {
     return (
-        <div className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'>
+        <motion.div
+            className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'
+            initial='hidden'
+            animate='visible'
+            variants={containerVariants}
+        >
             <div className='absolute inset-0 -z-10'>
                 <Image
                     src={bg11}
@@ -23,25 +44,25 @@ const Page = () => {
             </div>
 
             {/* Left Section */}
-            <div className='flex-1 ml-16 mr-8 overflow-y-auto'>
+            <motion.div className='flex-1 ml-16 mr-8 overflow-y-auto' variants={itemVariants}>
                 {/* First Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'>
+                <motion.div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8' variants={itemVariants}>
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         BLINDFOLD BYTES
                     </h1>
                     <div className='text-lg text-gray-300 mb-6 space-y-4'>
-                        <p>Invisible Logic is a challenging blind coding event where participants are asked to solve programming problems without the aid of a code editor. This unique competition requires participants to rely solely on their problem-solving and logical thinking skills, as they won't have access to syntax highlighting, code completion, or error feedback.</p>
+                        <p>Invisible Logic is a challenging blind coding event where participants are asked to solve programming problems without the aid of a code editor...</p>
                         <ul className='list-disc list-inside'>
-                            <li>Participants will need to visualize algorithms and code structures in their minds, simulating real-world scenarios without typical coding tools.</li>
-                            <li>The event tests both coding expertise and cognitive ability, pushing participants to their mental limits.</li>
-                            <li>It challenges coders to structure algorithms, debug errors, and think through logical flows without an IDE.</li>
-                            <li>Invisible Logic is the ultimate test of logic and problem-solving in its purest form.</li>
+                            <li>Participants will need to visualize algorithms and code structures in their minds...</li>
+                            <li>The event tests both coding expertise and cognitive ability...</li>
+                            <li>It challenges coders to structure algorithms, debug errors...</li>
+                            <li>Invisible Logic is the ultimate test of logic and problem-solving...</li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Second Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg'>
+                <motion.div className='bg-black bg-opacity-50 p-6 rounded-lg' variants={itemVariants}>
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         ADVANTAGES OF PARTICIPATING
                     </h1>
@@ -65,13 +86,13 @@ const Page = () => {
                             <li>Open to individuals and teams (up to 2 members).</li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* Right Section */}
-            <div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'>
+            <motion.div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto' variants={itemVariants}>
                 {/* Top 20% with bg18 Image */}
-                <div className='h-[35%] relative mb-6'>
+                <motion.div className='h-[35%] relative mb-6' variants={itemVariants}>
                     <Image
                         src={bg18}
                         alt='Top Background'
@@ -79,7 +100,7 @@ const Page = () => {
                         objectFit='cover'
                         className='rounded-lg'
                     />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <h1 className={`text-4xl font-bold text-red-500 mb-6 text-center ${audiowide.className}`}>
@@ -95,7 +116,7 @@ const Page = () => {
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-5 ${orbitron.className}`}>
-                    Vivekananda Institute of Technology 
+                    Vivekananda Institute of Technology
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Time
@@ -105,12 +126,12 @@ const Page = () => {
                 </h3>
 
                 {/* Registration Button */}
-                <div className='space-y-4'>
+                <motion.div className='space-y-4' variants={itemVariants}>
                     <button className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}>
                         Registration Form
                     </button>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
@@ -134,7 +155,7 @@ const Page = () => {
         }
       `}
             </style>
-        </div>
+        </motion.div>
     );
 };
 

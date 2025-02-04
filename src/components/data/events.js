@@ -5,7 +5,7 @@ export const events = [
   {
     id: 1,
     title: "Meta Madness",
-    shortDescription: "lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum",
+    shortDescription: "High intensity gaming with some of the most popular titles",
     fullDescription: "lorem ipsum ",
     date: "2024-06-10",
     location: "Tech Hub Center",
@@ -55,7 +55,7 @@ export const events = [
     location: "Cloud Tech Center",
     duration: "10 hours",
     category: "Cloud Computing",
-    img: 1,
+    img: 5,
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ export const events = [
     location: "Smart Systems Lab",
     duration: "8 hours",
     category: "IoT",
-    img: 2,
+    img: 6,
   },
   {
     id: 7,
@@ -77,7 +77,7 @@ export const events = [
     location: "DevOps Training Center",
     duration: "16 hours",
     category: "DevOps",
-    img: 3,
+    img: 7,
   },
   {
     id: 8,
@@ -88,7 +88,7 @@ export const events = [
     location: "Data Analytics Hub",
     duration: "14 hours",
     category: "Data Science",
-    img: 4,
+    img: 8,
   },
   {
     id: 9,
@@ -99,7 +99,7 @@ export const events = [
     location: "Virtual Reality Center",
     duration: "6 hours",
     category: "AR/VR",
-    img: 1,
+    img: 9,
     link: '/src/app/routerrush/page.tsx'
   }
 ].map(event => ({

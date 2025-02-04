@@ -3,15 +3,38 @@
 import React from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
+import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg13 from './backgrounds/bg13.jpg';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
+const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            delayChildren: 0.2,
+            staggerChildren: 0.2
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
+};
+
 const Page = () => {
     return (
-        <div className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'>
+        <motion.div
+            className='relative flex h-screen p-8 pt-10 text-gray-200 bg-black bg-opacity-40'
+            initial='hidden'
+            animate='visible'
+            variants={containerVariants}
+        >
             <div className='absolute inset-0 -z-10'>
                 <Image
                     src={bg11}
@@ -23,14 +46,14 @@ const Page = () => {
             </div>
 
             {/* Left Section */}
-            <div className='flex-1 ml-16 mr-8 overflow-y-auto'>
+            <motion.div className='flex-1 ml-16 mr-8 overflow-y-auto' variants={itemVariants}>
                 {/* First Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8'>
+                <motion.div className='bg-black bg-opacity-50 p-6 rounded-lg mb-8' variants={itemVariants}>
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         CAMPUS QUEST
                     </h1>
                     <div className='text-lg text-gray-300 mb-6 space-y-4'>
-                        <p>QuestCampus Quest is an exhilarating, campus-wide treasure hunt designed to ignite your curiosity and challenge your problem-solving skills. This event combines adventure, teamwork, and intellectual challenges, creating an unforgettable experience for participants.</p>
+                        <p>Campus Quest is an exhilarating, campus-wide treasure hunt designed to ignite your curiosity and challenge your problem-solving skills. This event combines adventure, teamwork, and intellectual challenges, creating an unforgettable experience for participants.</p>
                         <ul className='list-disc list-inside'>
                             <li>Clues are hidden all over the campus, waiting for you to find them.</li>
                             <li>Each clue comes with a question—solve it correctly to find the next location.</li>
@@ -40,10 +63,10 @@ const Page = () => {
                             <li>Put on your thinking caps, grab your friends, and explore the campus.</li>
                         </ul>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Second Box */}
-                <div className='bg-black bg-opacity-50 p-6 rounded-lg'>
+                <motion.div className='bg-black bg-opacity-50 p-6 rounded-lg' variants={itemVariants}>
                     <h1 className={`text-4xl font-bold text-cyan-400 mb-6 ${orbitron.className}`}>
                         ADVANTAGES OF PARTICIPATING
                     </h1>
@@ -67,13 +90,13 @@ const Page = () => {
                             <li>Comfortable attire and a campus map may be helpful.</li>
                         </ul>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
 
             {/* Right Section */}
-            <div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto'>
-                {/* Top 20% with bg12 Image */}
-                <div className='h-[35%] relative mb-6'>
+            <motion.div className='w-[35%] bg-black bg-opacity-50 p-8 rounded-lg mr-16 h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto' variants={itemVariants}>
+                {/* Top 20% with bg13 Image */}
+                <motion.div className='h-[35%] relative mb-6' variants={itemVariants}>
                     <Image
                         src={bg13}
                         alt='Top Background'
@@ -81,7 +104,7 @@ const Page = () => {
                         objectFit='cover'
                         className='rounded-lg'
                     />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <h1 className={`text-4xl font-bold text-red-500 mb-6 text-center ${audiowide.className}`}>
@@ -97,7 +120,7 @@ const Page = () => {
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-5 ${orbitron.className}`}>
-                    Vivekananda Institute of Technology 
+                    Vivekananda Institute of Technology
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Time
@@ -108,35 +131,38 @@ const Page = () => {
 
                 {/* Registration Button */}
                 <div className='space-y-4'>
-                    <button className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}>
+                    <motion.button 
+                        className={`block w-64 bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Registration Form
-                    </button>
+                    </motion.button>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
-        ::-webkit-scrollbar {
-          width: 12px;
-        }
+                ::-webkit-scrollbar {
+                    width: 12px;
+                }
 
-        ::-webkit-scrollbar-track {
-          background: #1a1a1a;
-          border-radius: 10px;
-        }
+                ::-webkit-scrollbar-track {
+                    background: #1a1a1a;
+                    border-radius: 10px;
+                }
 
-        ::-webkit-scrollbar-thumb {
-          background: #00ffff;
-          border-radius: 10px;
-          border: 3px solid #1a1a1a;
-        }
+                ::-webkit-scrollbar-thumb {
+                    background: #00ffff;
+                    border-radius: 10px;
+                    border: 3px solid #1a1a1a;
+                }
 
-        ::-webkit-scrollbar-thumb:hover {
-          background: #00cccc;
-        }
-      `}
-            </style>
-        </div>
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #00cccc;
+                }
+            `}</style>
+        </motion.div>
     );
 };
 
