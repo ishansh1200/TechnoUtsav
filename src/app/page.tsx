@@ -8,6 +8,7 @@ import Sponsors from "@/components/Sponsers";
 import { useEffect, useRef, useState } from "react";
 import Waves from "./Waves";
 import { usePathname } from "next/navigation"; 
+import ContactSection from '@/components/contact/index'
 
 export default function Home() {
   const colors = [
@@ -72,11 +73,11 @@ export default function Home() {
   }, [combinedAnimation, colors, pathname, isMounted]);
 
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen bg-black relative overflow-visible">
       {/* Background Gradient Animation */}
       <motion.div
         animate={combinedAnimation}
-        className="fixed top-0 left-0 w-full h-full z-1"
+        className="fixed top-0 left-0 w-full h-full z-1 overflow-visible"
       />
 
       {/* Waves Effect */}
@@ -84,7 +85,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full h-full z-2"
+        className="fixed top-0 left-0 w-full h-full z-2 overflow-visible"
       >
         <Waves
           lineColor="#fff"
@@ -107,24 +108,25 @@ export default function Home() {
 
       {/* Main Content with TextBox */}
       <motion.div
-        id = "home"
+        id="home"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen overflow-visible"
       >
         <TextBox />
       </motion.div>
 
       {/* Events Section */}
-      <div className="relative z-10" id="eventdetails">
+      <div className="relative z-10 overflow-visible" id="eventdetails">
         <Events />
       </div>
 
       {/* Sponsors Section - Now Has Background Gradient & Waves */}
-      <motion.div className="relative z-10 bg-opacity-0" id="sponsors">
+      <motion.div className="relative z-10 bg-opacity-0 overflow-visible" id="sponsors">
         <Sponsors />
       </motion.div>
+      <ContactSection />
     </div>
   );
 }

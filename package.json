@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/playfair-display": "^5.1.1",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "data-fns": "^1.1.0",
@@ -23,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.3",
+    "react-toastify": "^11.0.3",
     "react-vertical-timeline-component": "^3.5.3",
     "simplex-noise": "^4.0.3",
     "styled-components": "^6.1.14",
