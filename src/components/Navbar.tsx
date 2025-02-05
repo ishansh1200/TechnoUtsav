@@ -2,6 +2,10 @@
 
 import { motion, useAnimation } from "framer-motion";
 import { links } from "../../lib/data";
+import { Poppins } from "next/font/google";
+
+
+const playFairDisplay = Poppins({ subsets: ['latin'], weight: '500' });
 
 const Navbar = () => {
   const controls = useAnimation(); // Controls for smooth scrolling
@@ -36,11 +40,11 @@ const Navbar = () => {
         damping: 15,
       }}
     >
-      <nav className="flex justify-center gap-8 translate-y-5">
+      <nav className = "flex justify-center gap-8 translate-y-5">
         {links.map((link) => (
           <motion.div
             key={link.href}
-            className="rounded-full bg-gray-600 bg-opacity-50 shadow-xl text-center transition-all duration-300 ease-in-out"
+            className="rounded-full bg-black bg-opacity-65 shadow-xl text-center transition-all duration-300 ease-in-out"
             style={{
               width: "9rem",
               height: "3.5rem",
@@ -54,14 +58,14 @@ const Navbar = () => {
                 0px 0px 15px rgba(255, 255, 255, 0.4)
               `,
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.85 }}
           >
             <a
               href={`#${link.href}`}
               onClick={(e) => handleScroll(e, link.href)} // Add click handler
-              className="flex items-center justify-center h-full w-full text-gray-100 font-semibold text-[0.95rem] hover:text-white"
+              className={`flex items-center justify-center h-full w-full text-gray-100 font-semibold text-[1.05rem] hover:text-white`}
             >
-              <span>{link.name}</span>
+              <span className = {`${playFairDisplay.className}`}>{link.name}</span>
             </a>
           </motion.div>
         ))}

@@ -4,6 +4,12 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import EventCard from './EventCard';
 import { events } from './data/events';
+import { Orbitron, Audiowide } from 'next/font/google';
+
+const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
+const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
+
+
 
 function Events() {
   return (
@@ -16,11 +22,10 @@ function Events() {
           transition={{ duration: 0.8, type: 'spring' }}
           className="text-center mb-12 pb-10"
         >
-          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
-          from-violet-400 to-violet-200 mb-5">
+          <h1 className= {`text-7xl font-bold text-transparent opacity-75 bg-clip-text bg-gradient-to-r text-white mb-5 ${orbitron.className}`}>
             Tech Events
           </h1>
-          <p className="text-violet-300 text-lg mb-7">
+          <p className={`text-white text-3xl mb-7 opacity-75 ${audiowide.className}`}>
             Discover the Future of Technology
           </p>
         </motion.div>

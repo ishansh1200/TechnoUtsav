@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import Waves from "./Waves";
 import { usePathname } from "next/navigation"; 
 import ContactSection from '@/components/contact/index'
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const colors = [
@@ -125,8 +126,10 @@ export default function Home() {
       {/* Sponsors Section - Now Has Background Gradient & Waves */}
       <motion.div className="relative z-10 bg-opacity-0 overflow-visible" id="sponsors">
         <Sponsors />
+
       </motion.div>
       <ContactSection />
+      <Footer />
     </div>
   );
 }
