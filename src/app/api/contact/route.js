@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { request } from 'http';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -67,9 +68,9 @@ async function sendEmail(payload, message) {
   }
 };
 
-export async function POST(request) {
+export async function POST() {
   try {
-    const payload = await request.json();
+    const payload = await request.json(request);
     const { name, email, message: userMessage } = payload;
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chat_id = process.env.TELEGRAM_CHAT_ID;
