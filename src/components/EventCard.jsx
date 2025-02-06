@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Orbitron } from "next/font/google";
 
@@ -24,57 +24,32 @@ const eventImages = {
 
 const EventCard = ({ event }) => {
   const eventImage = eventImages[event.img];
-  const controls = useAnimation();
-  const cardRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleAnimation = async () => {
+  const handleAnimation = () => {
     if (isAnimating) return;
     setIsAnimating(true);
 
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = window.innerWidth / 2 - rect.left - rect.width / 2;
-    const centerY = window.innerHeight / 2 - rect.top - rect.height / 2;
-
-    await controls.start({
-      x: centerX,
-      y: centerY,
-      transition: { duration: 0.5, ease: "easeInOut" }
-    });
-
-    await controls.start({
-      scale: Math.max(window.innerWidth / rect.width, window.innerHeight / rect.height),
-      transition: { duration: 2.0, ease: "easeInOut" }
-    });
-
     // Save animation state before navigating
     window.sessionStorage.setItem("eventAnimating", JSON.stringify({ event: event.id, animating: true }));
-    
     window.location.href = event.link;
   };
 
   useEffect(() => {
     // Clear any stored animation state when the component mounts
     window.sessionStorage.removeItem("eventAnimating");
-
-    // Reset animation state to its original
-    controls.start({ x: 0, y: 0, scale: 1, opacity: 1 });
     setIsAnimating(false);
-  }, [controls]);
+  }, []);
 
   return (
     <motion.div
-      ref={cardRef}
       className="relative flex w-72 sm:w-80 md:w-[40vh] lg:w-[50vh] h-[60vh] sm:h-[65vh] md:h-[68vh] lg:h-[72vh] 
       flex-col rounded-3xl bg-black bg-opacity-75 text-white transition-all duration-300 -mb-14 items-center 
       justify-between p-4 sm:p-6 md:p-8 overflow-hidden -ml-4 sm:-ml-6 md:-ml-8"
-      animate={controls}
-      initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-      style={{ originZ: 0.5 }}
+      initial={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Content Container */}
       <motion.div
         animate={{
           opacity: isAnimating ? 0 : 1,
@@ -82,7 +57,6 @@ const EventCard = ({ event }) => {
         }}
         className="w-full h-full flex flex-col"
       >
-        {/* Image Section */}
         <motion.div
           className="relative w-full h-40 sm:h-44 md:h-48 flex justify-center items-center rounded-3xl shadow-lg overflow-hidden"
           whileHover={{ scale: 1.1 }}
@@ -97,7 +71,6 @@ const EventCard = ({ event }) => {
           />
         </motion.div>
 
-        {/* Text Content */}
         <motion.div className="flex flex-col text-center flex-grow px-2 sm:px-4 mt-8 sm:mt-12 md:mt-14">
           <motion.h5 
             className={`${orbitron.className} text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-wide mb-2 sm:mb-3`}
@@ -107,7 +80,6 @@ const EventCard = ({ event }) => {
           <p className="text-sm sm:text-base md:text-lg font-light">{event.shortDescription}</p>
         </motion.div>
 
-        {/* Button Section with Glow Effect */}
         <div className="mt-auto w-full">
           <div className="relative group">
             <motion.button 
@@ -117,12 +89,8 @@ const EventCard = ({ event }) => {
               bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-all 
               duration-500 ease-in-out hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
-              {/* Glow Effect */}
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"></span>
-              
-              {/* White Glow Border */}
               <span className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-all duration-500"></span>
-              
               <span className="relative z-10 block px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-gray-950">
                 <div className="relative z-10 flex items-center justify-center space-x-2">
                   <span className="transition-all duration-500 group-hover:translate-x-1">
