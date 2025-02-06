@@ -2,28 +2,47 @@ import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-  const reqBody = await request.json();
-  const secret_key = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY;
-
   try {
-    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${reqBody.token}`;
+    const reqBody = await request.json();
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY; // 🔒 Use secure env variable
 
-    const res = await axios.post(url);
+    if (!secretKey) {
+      return NextResponse.json(
+        {
+          error: "reCAPTCHA secret key is missing in the server.",
+          success: false,
+        },
+        { status: 500 }
+      );
+    }
+
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${reqBody.token}`;
+
+    const res = await axios.get(url); // ✅ Use GET request
+
     if (res.data.success) {
       return NextResponse.json({
-        message: "Captcha verification success!!",
+        message: "Captcha verification successful!",
         success: true,
-      })
-    };
+      });
+    }
 
-    return NextResponse.json({
-      error: "Captcha verification failed!",
-      success: false,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: "Captcha verification failed!",
+        success: false,
+      },
+      { status: 400 }
+    );
   } catch (error) {
-    return NextResponse.json({
-      error: "Captcha verification failed!",
-      success: false,
-    }, { status: 500 });
+    console.error("reCAPTCHA Verification Error:", error.message);
+
+    return NextResponse.json(
+      {
+        error: "Captcha verification failed due to server error.",
+        success: false,
+      },
+      { status: 500 }
+    );
   }
-};
+}
