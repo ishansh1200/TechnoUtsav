@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
 import { motion } from 'framer-motion';
@@ -11,8 +11,7 @@ const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
 const Page = () => {
-    // Dummy variable to avoid warning
-    const keyframes = [];
+    const keyframes = useMemo(() => [], []); // Wrap keyframes in useMemo
 
     useEffect(() => {
         // Your useEffect logic here (if any)
@@ -48,7 +47,7 @@ const Page = () => {
                         NO BUG ZONE
                     </h1>
                     <div className='text-base lg:text-lg text-gray-300 mb-4 lg:mb-6 space-y-4'>
-                        <p>The Code Debugging Challenge is a thrilling on-the-spot coding competition where participants form teams and work together to solve problems, only to have their code "bugged" by event organizers.</p>
+                        <p>The Code Debugging Challenge is a thrilling on-the-spot coding competition where participants form teams and work together to solve problems, only to have their code &quot;bugged&quot; by event organizers.</p>
                         <ul className='list-disc list-inside'>
                             <li>Teams receive pre-written buggy code and must debug it under a time constraint.</li>
                             <li>Participants simulate real-world debugging scenarios by diagnosing and fixing issues in unfamiliar codebases.</li>
@@ -129,6 +128,32 @@ const Page = () => {
                     Registration Form
                 </motion.button>
             </motion.div>
+            <style jsx global>{`
+                ::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                ::-webkit-scrollbar-track {
+                    background: #1a1a1a;
+                    border-radius: 10px;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    background: #00ffff;
+                    border-radius: 10px;
+                    border: 2px solid #1a1a1a;
+                }
+
+                ::-webkit-scrollbar-thumb:hover {
+                    background: #00cccc;
+                }
+
+                @media (max-width: 768px) {
+                    ::-webkit-scrollbar {
+                        width: 4px;
+                    }
+                }
+            `}</style>
         </motion.div>
     );
 };
