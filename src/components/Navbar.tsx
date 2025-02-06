@@ -1,16 +1,16 @@
 "use client";
-
 import { motion, useAnimation } from "framer-motion";
 import { links } from "../../lib/data";
 import { Poppins } from "next/font/google";
+import React from "react";
 
-
-const playFairDisplay = Poppins({ subsets: ['latin'], weight: '500' });
+const playFairDisplay = Poppins({ subsets: ["latin"], weight: "500" });
 
 const Navbar = () => {
   const controls = useAnimation(); // Controls for smooth scrolling
 
-  const handleScroll = async (e, targetId) => {
+  // Add explicit type annotations for TypeScript
+  const handleScroll = async (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
 
@@ -40,7 +40,7 @@ const Navbar = () => {
         damping: 15,
       }}
     >
-      <nav className = "flex justify-center gap-8 translate-y-5">
+      <nav className="flex justify-center gap-8 translate-y-5">
         {links.map((link) => (
           <motion.div
             key={link.href}
@@ -65,7 +65,7 @@ const Navbar = () => {
               onClick={(e) => handleScroll(e, link.href)} // Add click handler
               className={`flex items-center justify-center h-full w-full text-gray-100 font-semibold text-[1.05rem] hover:text-white`}
             >
-              <span className = {`${playFairDisplay.className}`}>{link.name}</span>
+              <span className={`${playFairDisplay.className}`}>{link.name}</span>
             </a>
           </motion.div>
         ))}
