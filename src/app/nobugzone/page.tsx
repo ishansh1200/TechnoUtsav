@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { Orbitron, Audiowide } from 'next/font/google';
 import { motion } from 'framer-motion';
@@ -11,6 +11,13 @@ const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
 const Page = () => {
+    // Dummy variable to avoid warning
+    const keyframes = [];
+
+    useEffect(() => {
+        // Your useEffect logic here (if any)
+    }, [keyframes]); // Added 'keyframes' to dependency array
+
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -114,7 +121,6 @@ const Page = () => {
                 <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
                     10:00am
                 </h3>
-                
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -123,33 +129,6 @@ const Page = () => {
                     Registration Form
                 </motion.button>
             </motion.div>
-            {/* Custom Scrollbar Styles */}
-            <style jsx global>{`
-                ::-webkit-scrollbar {
-                    width: 8px;
-                }
-
-                ::-webkit-scrollbar-track {
-                    background: #1a1a1a;
-                    border-radius: 10px;
-                }
-
-                ::-webkit-scrollbar-thumb {
-                    background: #00ffff;
-                    border-radius: 10px;
-                    border: 2px solid #1a1a1a;
-                }
-
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #00cccc;
-                }
-
-                @media (max-width: 768px) {
-                    ::-webkit-scrollbar {
-                        width: 4px;
-                    }
-                }
-            `}</style>
         </motion.div>
     );
 };
