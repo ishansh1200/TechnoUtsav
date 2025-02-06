@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Orbitron } from "next/font/google";
 
 const orbitron = Orbitron({
@@ -47,16 +47,30 @@ const EventCard = ({ event }) => {
       transition: { duration: 2.0, ease: "easeInOut" }
     });
 
+    // Save animation state before navigating
+    window.sessionStorage.setItem("eventAnimating", JSON.stringify({ event: event.id, animating: true }));
+    
     window.location.href = event.link;
   };
+
+  useEffect(() => {
+    const storedState = JSON.parse(window.sessionStorage.getItem("eventAnimating"));
+    
+    if (storedState?.event === event.id) {
+      controls.start({ x: 0, y: 0, scale: 1, opacity: 1 });
+      setIsAnimating(false);
+      window.sessionStorage.removeItem("eventAnimating");
+    }
+  }, [controls, event.id]);
 
   return (
     <motion.div
       ref={cardRef}
       className="relative flex w-72 sm:w-80 md:w-[40vh] lg:w-[50vh] h-[60vh] sm:h-[65vh] md:h-[68vh] lg:h-[72vh] 
       flex-col rounded-3xl bg-black bg-opacity-75 text-white transition-all duration-300 -mb-14 items-center 
-      justify-between p-4 sm:p-6 md:p-8 overflow-hidden -ml-4 sm:-ml-6 md:-ml-8s"
+      justify-between p-4 sm:p-6 md:p-8 overflow-hidden -ml-4 sm:-ml-6 md:-ml-8"
       animate={controls}
+      initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
       style={{ originZ: 0.5 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.3 }}
