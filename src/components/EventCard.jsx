@@ -54,14 +54,13 @@ const EventCard = ({ event }) => {
   };
 
   useEffect(() => {
-    const storedState = JSON.parse(window.sessionStorage.getItem("eventAnimating"));
-    
-    if (storedState?.event === event.id) {
-      controls.start({ x: 0, y: 0, scale: 1, opacity: 1 });
-      setIsAnimating(false);
-      window.sessionStorage.removeItem("eventAnimating");
-    }
-  }, [controls, event.id]);
+    // Clear any stored animation state when the component mounts
+    window.sessionStorage.removeItem("eventAnimating");
+
+    // Reset animation state to its original
+    controls.start({ x: 0, y: 0, scale: 1, opacity: 1 });
+    setIsAnimating(false);
+  }, [controls]);
 
   return (
     <motion.div
