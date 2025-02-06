@@ -1,5 +1,4 @@
 "use client";
-
 import Navbar from "@/components/Navbar";
 import TextBox from "@/components/TextBox";
 import { motion, useAnimation } from "framer-motion";
@@ -8,7 +7,6 @@ import Sponsors from "@/components/Sponsers";
 import { useEffect, useRef, useState } from "react";
 import Waves from "./Waves";
 import { usePathname } from "next/navigation"; 
-import ContactSection from '@/components/contact/index'
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -128,7 +126,6 @@ export default function Home() {
         <Sponsors />
 
       </motion.div>
-      <ContactSection />
       <Footer />
     </div>
   );
