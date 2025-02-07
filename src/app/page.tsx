@@ -72,11 +72,11 @@ export default function Home() {
   }, [combinedAnimation, colors, pathname, isMounted]);
 
   return (
-    <div className="min-h-screen bg-black relative overflow-visible">
+    <div className="min-h-screen bg-black relative overflow-hidden w-full">
       {/* Background Gradient Animation */}
       <motion.div
         animate={combinedAnimation}
-        className="fixed top-0 left-0 w-full h-full z-1 overflow-visible"
+        className="fixed top-0 left-0 w-full h-full z-1 overflow-hidden max-w-full"
       />
 
       {/* Waves Effect */}
@@ -84,7 +84,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full h-full z-2 overflow-visible"
+        className="fixed top-0 left-0 w-full h-full z-2 overflow-hidden"
       >
         <Waves
           lineColor="#fff"
@@ -111,21 +111,22 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen overflow-visible"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full overflow-hidden"
       >
         <TextBox />
       </motion.div>
 
       {/* Events Section */}
-      <div className="relative z-10 overflow-visible" id="eventdetails">
+      <div className="relative z-10 w-full px-4 sm:px-8 flex items-center text-center" id="eventdetails">
         <Events />
       </div>
 
-      {/* Sponsors Section - Now Has Background Gradient & Waves */}
-      <motion.div className="relative z-10 bg-opacity-0 overflow-visible" id="sponsors">
+      {/* Sponsors Section */}
+      <motion.div  className="relative z-10 w-full px-4 sm:px-8 flex flex-col" id="eventdetails">
         <Sponsors />
-
       </motion.div>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

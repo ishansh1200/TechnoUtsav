@@ -32,7 +32,7 @@ function Events() {
 
         {/* Event Cards with Scroll Animation */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 w-full
           lg:gap-x-36 lg:gap-y-36 gap-y-20 gap-x-5 sm:gap-x-1 px-15 sm:px-4 md:px-5 lg:px-20 -translate-x-13"
         >
           {events.map((event, index) => (

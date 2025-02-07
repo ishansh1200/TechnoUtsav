@@ -1,14 +1,72 @@
-import React from 'react';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { Audiowide, Orbitron } from "next/font/google";
 
-function Sponsers() {
+const orbitron = Orbitron({ subsets: ["latin"], weight: "700" });
+const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.4, delayChildren: 0.3 }, // Slightly increased delays
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 100, rotate: -10, scale: 0.8 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        rotate: 0,
+        scale: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+        },
+    },
+};
+
+function Sponsors() {
     return (
-        <div className="pt-[5%] h-screen w-full text-white flex items-center justify-center bg-gray-900 bg-opacity-0">
-            <div className="bg-gray-800 p-10 rounded-lg text-center">
-                <h2 className="text-3xl font-bold mb-6">Sponsors</h2>
-                <p className="text-xl">Sponsors coming soon</p>
-            </div>
-        </div>
+        <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={containerVariants}
+            className="pt-32 pb-20 mt-24 h-auto w-full text-white flex flex-col items-center justify-center z-[-10]"
+        >
+            {/* Main Heading */}
+            <motion.h1
+                variants={{
+                    hidden: { opacity: 0, y: -50, scale: 0.8, rotate: -5 },
+                    visible: { opacity: 1, y: 0, scale: 1, rotate: 0 },
+                }}
+                transition={{ type: "spring", stiffness: 120, damping: 8 }}
+                className={`${audiowide.className} text-[6vh] sm:text-[12vh] mb-8 sm:mb-14 text-center leading-tight`}
+            >
+                SPONSORS
+            </motion.h1>
+
+            {/* Sponsorship Tiers with Increased Spacing */}
+            <motion.div
+                className={`${orbitron.className} flex flex-col items-center gap-y-16 sm:gap-y-20 w-full max-w-[90%] sm:max-w-[70%]`}
+                variants={containerVariants}
+            >
+                {["TITLE SPONSOR", "CO-SPONSOR", "ASSOCIATE SPONSOR", "PARTNER"].map((tier, index) => (
+                    <motion.h2
+                        key={tier}
+                        variants={itemVariants}
+                        className="text-3xl sm:text-[6vh] text-gray-300 opacity-75 text-center"
+                    >
+                        {tier}
+                    </motion.h2>
+                ))}
+            </motion.div>
+        </motion.div>
     );
 }
 
-export default Sponsers;
+export default Sponsors;

@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <footer className="bg-black bg-opacity-65 text-white py-4 text-center border-t border-gray-700 z-999">
+        <footer className="bg-black bg-opacity-65 text-white py-4 text-center border-t border-gray-700 z-[999]">
             <p className="font-lg">
                 &copy; {new Date().getFullYear()} {" "}
                 <a 
