@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -22,7 +21,7 @@ const eventImages = {
   9: "/images/9.jpg",
 };
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, isLast }) => {
   const eventImage = eventImages[event.img];
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -43,18 +42,18 @@ const EventCard = ({ event }) => {
 
   return (
     <motion.div
-      className="relative flex w-72 sm:w-80 md:w-[40vh] lg:w-[50vh] h-[60vh] sm:h-[65vh] md:h-[68vh] lg:h-[72vh] 
-      flex-col rounded-3xl bg-black bg-opacity-75 text-white transition-all duration-300 -mb-14 items-center 
-      justify-between p-4 sm:p-6 md:p-8 overflow-hidden -ml-4 sm:-ml-6 md:-ml-8"
+      className={`relative flex w-72 sm:w-80 md:w-[40vh] lg:w-[50vh] 
+      h-[50vh] sm:h-[55vh] md:h-[68vh] lg:h-[72vh] 
+      flex-col rounded-3xl bg-black bg-opacity-75 text-white transition-all duration-300 
+      items-center justify-between p-4 sm:p-6 md:p-8 overflow-hidden 
+      -ml-10 sm:-ml-6 md:-ml-8 ${isLast ? "mb-10 sm:mb-16 md:mb-20 lg:mb-24" : ""}`}
       initial={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.1 }}
       transition={{ duration: 0.3 }}
     >
-      <motion.div
-        className="w-full h-full flex flex-col"
-      >
+      <motion.div className="w-full h-full flex flex-col">
         <motion.div
-          className="relative w-full h-40 sm:h-44 md:h-48 flex justify-center items-center rounded-3xl shadow-lg overflow-hidden"
+          className="relative w-full h-36 sm:h-40 md:h-48 flex justify-center items-center rounded-3xl shadow-lg overflow-hidden"
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
         >
@@ -67,29 +66,30 @@ const EventCard = ({ event }) => {
           />
         </motion.div>
 
-        <motion.div className="flex flex-col text-center flex-grow px-2 sm:px-4 mt-8 sm:mt-12 md:mt-14">
+        <motion.div className="flex flex-col text-center flex-grow px-2 sm:px-4 mt-6 sm:mt-10 md:mt-14">
           <motion.h5 
-            className={`${orbitron.className} text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-wide mb-2 sm:mb-3`}
+            className={`${orbitron.className} text-lg sm:text-xl md:text-2xl font-bold text-white tracking-wide mb-2 sm:mb-3`}
           >
             {event.title}
           </motion.h5>
-          <p className="text-sm sm:text-base md:text-lg font-light">{event.shortDescription}</p>
+          <p className="text-sm sm:text-base md:text-xl font-light">{event.shortDescription}</p>
         </motion.div>
 
-        <div className="mt-auto w-full">
+        {/* Read More Button - Ensuring it's on top */}
+        <div className="mt-auto w-full relative z-50">
           <div className="relative group">
             <motion.button 
               onClick={handleAnimation}
-              className="relative inline-block p-px font-semibold leading-6 text-white
+              className="relative z-50 inline-block p-px font-semibold leading-6 text-white
               bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-all 
               duration-500 ease-in-out hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"></span>
               <span className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-all duration-500"></span>
-              <span className="relative z-10 block px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-gray-950">
-                <div className="relative z-10 flex items-center justify-center space-x-2">
+              <span className="relative z-50 block px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-gray-950">
+                <div className="relative z-50 flex items-center justify-center space-x-2">
                   <span className="transition-all duration-500 group-hover:translate-x-1">
-                    {isAnimating ? "Entering..." : "Read More"}
+                    {"Read More"}
                   </span>
                   <svg
                     className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 transition-transform duration-500 group-hover:translate-x-1"
@@ -114,3 +114,4 @@ const EventCard = ({ event }) => {
 };
 
 export default EventCard;
+  

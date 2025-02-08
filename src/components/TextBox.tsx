@@ -14,11 +14,12 @@ const text = ["I", "n", "n", "o", "वृत्ति"]; // Updated Hindi text
 const TextBox = () => {
     return (
         <div className="flex items-center justify-center min-h-screen relative w-full overflow-visible">
-            <div className="rounded-3xl p-20 text-center w-[70%] md:w-[85%] lg:w-[75%] flex items-center justify-center bg-opacity-0 relative bg-cover bg-center overflow-visible">
+            <div className="rounded-3xl p-20 text-center w-[70%] md:w-[85%] lg:w-[75%] flex items-center 
+            justify-center bg-opacity-0 relative bg-cover bg-center overflow-visible">
                 
                 {/* Animated Text */}
                 <motion.div className={`${mukta.className} flex items-center justify-center w-full text-white 
-                        text-8xl md:text-9xl lg:text-[14rem] font-bold tracking-widest relative leading-tight`}
+                        text-[10vh] md:text-9xl lg:text-[14rem] font-bold tracking-widest relative leading-tight`}
                 >
                     {text.map((char, i) => (
                         <motion.span

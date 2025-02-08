@@ -9,8 +9,6 @@ import { Orbitron, Audiowide } from 'next/font/google';
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
-
-
 function Events() {
   return (
     <div className="min-h-screen w-[100%] text-white">
@@ -21,11 +19,13 @@ function Events() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, type: 'spring' }}
           className="text-center mb-12 pb-10"
-        >
-          <h1 className= {`text-7xl font-bold text-transparent opacity-75 bg-clip-text bg-gradient-to-r text-white mb-5 ${orbitron.className}`}>
-            Tech Events
-          </h1>
-          <p className={`text-white text-3xl mb-7 opacity-75 ${audiowide.className}`}>
+        > 
+          <div className="w-full flex sm:justify-center justify-center">
+            <h1 className={`text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#758BFD] to-white/90 mb-5 ${orbitron.className}`}>
+              Tech {" "} Events
+            </h1>
+          </div>
+          <p className={`text-gray-200 text-3xl mb-7 opacity-75 ${audiowide.className}`}>
             Discover the Future of Technology
           </p>
         </motion.div>
