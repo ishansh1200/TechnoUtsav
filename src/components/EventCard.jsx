@@ -77,7 +77,7 @@ const EventCard = ({ event, isLast }) => {
           >
             {event.title}
           </motion.h5>
-          <p className="text-sm sm:text-base md:text-xl font-light">{event.shortDescription}</p>
+          <p className="text-lg sm:text-base md:text-xl font-light">{event.shortDescription}</p>
         </motion.div>
 
         {/* Read More Button - Ensuring it's on top */}

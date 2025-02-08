@@ -27,7 +27,7 @@ const TextBox = () => {
                             initial={{ opacity: 0, rotateX: -90, y: -50 }}
                             animate={{ opacity: 1, rotateX: 0, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
-                            className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 leading-relaxed"
+                            className="bg-clip-text text-transparent bg-gradient-to-r from-[#6874E8] via-[#F7D6E0] to-[#F7ACCF] leading-relaxed"
                         >
                             {char}
                         </motion.span>
