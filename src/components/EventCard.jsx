@@ -31,6 +31,11 @@ const EventCard = ({ event, isLast }) => {
 
     // Save animation state before navigating
     window.sessionStorage.setItem("eventAnimating", JSON.stringify({ event: event.id, animating: true }));
+
+    // Reset animation state slightly after click
+    setTimeout(() => setIsAnimating(false), 500);
+
+    // Navigate to the event link
     window.location.href = event.link;
   };
 
@@ -80,9 +85,10 @@ const EventCard = ({ event, isLast }) => {
           <div className="relative group">
             <motion.button 
               onClick={handleAnimation}
-              className="relative z-50 inline-block p-px font-semibold leading-6 text-white
+              className={`relative z-50 inline-block p-px font-semibold leading-6 text-white
               bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-all 
-              duration-500 ease-in-out hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed w-full"
+              duration-500 ease-in-out hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed w-full`}
+              disabled={isAnimating} // Disable button when animating
             >
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]"></span>
               <span className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-all duration-500"></span>
@@ -114,4 +120,3 @@ const EventCard = ({ event, isLast }) => {
 };
 
 export default EventCard;
-  
