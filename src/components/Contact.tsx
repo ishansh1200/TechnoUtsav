@@ -26,7 +26,7 @@ const Contact = () => {
                 
                 {/* Social Media Icons */}
                 <div className="flex justify-center items-center gap-6 mt-4 text-2xl mb-7">
-                    <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://discord.gg/Pxfak7sF" target="_blank" rel="noopener noreferrer">
                         <FaDiscord className="hover:text-blue-500 transition duration-300" />
                     </a>
                     <a href="https://www.instagram.com/innovriti.vips/" target="_blank" rel="noopener noreferrer">
