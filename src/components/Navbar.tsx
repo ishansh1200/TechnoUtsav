@@ -1,5 +1,5 @@
 "use client";
-import { motion, useAnimation } from "framer-motion";
+import { motion} from "framer-motion";
 import { links } from "../../lib/data";
 import { Poppins } from "next/font/google";
 import React, { useState, useEffect } from "react";
