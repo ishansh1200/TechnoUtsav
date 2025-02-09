@@ -46,7 +46,7 @@ function Sponsors() {
                     visible: { opacity: 1, y: 0, scale: 1, rotate: 0 },
                 }}
                 transition={{ type: "spring", stiffness: 120, damping: 8 }}
-                className={`${audiowide.className} text-[6vh] sm:text-[12vh] mb-8 sm:mb-14 text-center leading-tight`}
+                className={`${audiowide.className} text-[6vh] text-transparent bg-clip-text bg-gradient-to-r from-[#758BFD] to-white/90 sm:text-[12vh] mb-8 sm:mb-14 text-center leading-tight`}
                 
             >
                 SPONSORS
