@@ -1,4 +1,6 @@
 "use client";
+
+import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import TextBox from "@/components/TextBox";
 import { motion, useAnimation } from "framer-motion";
