@@ -2,27 +2,17 @@
 
 
 export const events = [
+
   {
-    id: 1,
-    title: "Meta Madness",
-    shortDescription: "High intensity gaming with some of the most popular titles",
-    fullDescription: "lorem ipsum ",
+    id: 7,
+    title: "AERORUSH",
+    shortDescription: "Streamline your development operations",
+    fullDescription: "Master the tools and practices of modern DevOps. Cover CI/CD pipelines, container orchestration, and infrastructure as code. Hands-on experience with Docker and Kubernetes.",
     date: "2024-06-10",
-    location: "Tech Hub Center",
-    duration: "8 hours",
-    category: "Artificial Intelligence",
-    img: 1,
-  },
-  {
-    id: 2,
-    title: "Innovate X",
-    shortDescription: "48-hour coding challenge to build innovative solutions",
-    fullDescription: "Put your coding skills to the test in this intensive hackathon. Form teams, tackle real-world problems, and create working prototypes. Prizes worth $10,000 up for grabs!",
-    date: "2024-06-10",
-    location: "Digital Innovation Lab",
-    duration: "48 hours",
-    category: "Programming",
-    img: 2,
+    location: "DevOps Training Center",
+    duration: "16 hours",
+    category: "DevOps",
+    img: 7,
   },
   {
     id: 3,
@@ -58,26 +48,15 @@ export const events = [
     img: 5,
   },
   {
-    id: 6,
-    title: "No Bug Zone",
-    shortDescription: "Connecting the physical and digital worlds",
-    fullDescription: "Explore the Internet of Things ecosystem. Learn about sensors, embedded systems, and building connected devices. Includes practical demonstrations and project showcase.",
+    id: 2,
+    title: "Innovate X",
+    shortDescription: "48-hour coding challenge to build innovative solutions",
+    fullDescription: "Put your coding skills to the test in this intensive hackathon. Form teams, tackle real-world problems, and create working prototypes. Prizes worth $10,000 up for grabs!",
     date: "2024-06-10",
-    location: "Smart Systems Lab",
-    duration: "8 hours",
-    category: "IoT",
-    img: 6,
-  },
-  {
-    id: 7,
-    title: "Drone Racing",
-    shortDescription: "Streamline your development operations",
-    fullDescription: "Master the tools and practices of modern DevOps. Cover CI/CD pipelines, container orchestration, and infrastructure as code. Hands-on experience with Docker and Kubernetes.",
-    date: "2024-06-10",
-    location: "DevOps Training Center",
-    duration: "16 hours",
-    category: "DevOps",
-    img: 7,
+    location: "Digital Innovation Lab",
+    duration: "48 hours",
+    category: "Programming",
+    img: 2,
   },
   {
     id: 8,
@@ -91,6 +70,17 @@ export const events = [
     img: 8,
   },
   {
+    id: 1,
+    title: "Meta Madness",
+    shortDescription: "High intensity gaming with some of the most popular titles",
+    fullDescription: "lorem ipsum ",
+    date: "2024-06-10",
+    location: "Tech Hub Center",
+    duration: "8 hours",
+    category: "Artificial Intelligence",
+    img: 1,
+  },
+  {
     id: 9,
     title: "Router Rush",
     shortDescription: "Experience the future of immersive technology",
@@ -101,11 +91,25 @@ export const events = [
     category: "AR/VR",
     img: 9,
     link: '/src/app/routerrush/page.tsx'
-  }
+  },
+  {
+    id: 6,
+    title: "No Bug Zone",
+    shortDescription: "Connecting the physical and digital worlds",
+    fullDescription: "Explore the Internet of Things ecosystem. Learn about sensors, embedded systems, and building connected devices. Includes practical demonstrations and project showcase.",
+    date: "2024-06-10",
+    location: "Smart Systems Lab",
+    duration: "8 hours",
+    category: "IoT",
+    img: 6,
+  },
 ].map(event => ({
   ...event,
-  link: `/${event.title.toLowerCase().replace(/\s+/g, '')}` // Generate link dynamically
+  link: event.title.toLowerCase()
+    .replace(/\s+/g, '') // Remove spaces
+    .replace(/[^a-z0-9-]/g, '') // Remove special characters
 }));
+
 
 
 

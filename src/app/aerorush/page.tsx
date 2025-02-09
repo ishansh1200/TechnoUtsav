@@ -5,6 +5,7 @@ import { Orbitron, Audiowide } from "next/font/google"
 import { motion } from "framer-motion"
 import bg11 from "./backgrounds/bg11.jpg"
 import bg22 from "./backgrounds/bg22.jpg"
+import Link from "next/link"
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: "700" })
 const audiowide = Audiowide({ subsets: ["latin"], weight: "400" })
@@ -41,7 +42,7 @@ const Page = () => {
         {/* First Box */}
         <motion.div className="bg-black bg-opacity-50 p-4 lg:p-6 rounded-lg mb-8" variants={itemVariants}>
           <h1 className={`text-3xl lg:text-4xl font-bold text-cyan-400 mb-4 lg:mb-6 ${orbitron.className}`}>
-            DRONE RACING
+            AERORUSH - DRONE RACING
           </h1>
           <div className="text-base lg:text-lg text-gray-300 mb-4 lg:mb-6 space-y-4">
             <p>
@@ -101,23 +102,29 @@ const Page = () => {
           EVENT DETAILS
         </h1>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Total Prize Pool</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>xxxx Rs</h3>
+        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>Rs 60,000</h3>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Venue</h2>
         <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-          Vivekananda Institute of Technology
+          Main Ground
         </h3>
-        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Time</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>10:00am</h3>
+        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
+          Date and Time
+          </h2>
+        <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>27th Feb 2025</h3>
+        <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>11:00AM to 3:00 PM</h3>
 
-        <div className="space-y-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className={`block w-full lg:w-64 mx-auto bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
-          >
-            Registration Form
-          </motion.button>
-        </div>
+        <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
+                    <Link href=' https://unstop.com/p/aerorush-drone-racing-vivekananda-institute-of-professional-studies-vips-delhi-1392448' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Registration Form
+                        </button>
+                    </Link>
+                    <Link href='https://docs.google.com/document/d/1QZGp3494KHA7df5kqTrk1H1HawqBrYmhL6f2KiaQwo4/edit?usp=sharing' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Event Details
+                        </button>
+                    </Link>
+                </motion.div>
       </motion.div>
 
       <style jsx global>{`

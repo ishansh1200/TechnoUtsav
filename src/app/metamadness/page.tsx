@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Orbitron, Audiowide } from "next/font/google"
 import bg11 from "./backgrounds/bg11.jpg"
 import bg20 from "./backgrounds/bg20.jpg"
+import Link from "next/link"
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: "700" })
 const audiowide = Audiowide({ subsets: ["latin"], weight: "400" })
@@ -12,6 +13,11 @@ const fadeIn = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 }
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
 const Page = () => {
   return (
@@ -85,22 +91,38 @@ const Page = () => {
           EVENT DETAILS
         </h1>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Total Prize Pool</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>xxxx Rs</h3>
+        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>Rs 30,000</h3>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Venue</h2>
         <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-          Vivekananda Institute of Professional Studies - Technical Campus
+          Rooms 203, 403
         </h3>
-        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Time</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>10:00am</h3>
+        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Date and Time</h2>
+        <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>27th Feb 2025</h3>
+        <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>10:00 AM to 5:00 PM</h3>
 
         {/* Registration Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={`block w-full lg:w-64 mx-auto bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
-        >
-          Registration Form
-        </motion.button>
+        <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
+                    <Link href='https://unstop.com/p/gaming-arena-call-of-duty-vivekananda-institute-of-professional-studies-vips-delhi-1393044' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Call of Duty
+                        </button>
+                    </Link>
+                    <Link href='https://unstop.com/p/gaming-arena-clash-royal-vivekananda-institute-of-professional-studies-vips-delhi-1393069' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Clash Royale
+                        </button>
+                    </Link>
+                    <Link href='https://unstop.com/p/gaming-arena-stumble-guys-vivekananda-institute-of-professional-studies-vips-delhi-1393081' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Stumble Guys
+                        </button>
+                    </Link>
+                    <Link href='https://docs.google.com/document/d/1eiQnKSs-tDmOF4QvVbNSljQ4hpbUxPTgonxKvxJaWtU/edit?usp=sharing' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Event Details
+                        </button>
+                    </Link>
+                </motion.div>
       </motion.div>
       {/* Custom Scrollbar Styles */}
       <style jsx global>

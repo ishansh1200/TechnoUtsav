@@ -6,6 +6,7 @@ import { Orbitron, Audiowide } from 'next/font/google';
 import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg18 from './backgrounds/bg18.jpg';
+import Link from 'next/link';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
@@ -91,7 +92,6 @@ const Page = () => {
 
             {/* Right Section */}
             <motion.div className='w-full lg:w-[35%] bg-black bg-opacity-50 p-4 lg:p-8 rounded-lg lg:mr-8 h-auto lg:h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto' variants={itemVariants}>
-                {/* Top 20% with bg18 Image */}
                 <motion.div className='h-48 lg:h-[35%] relative mb-6' variants={itemVariants}>
                     <Image
                         src={bg18 || "/placeholder.svg"}
@@ -102,7 +102,6 @@ const Page = () => {
                     />
                 </motion.div>
 
-                {/* Content */}
                 <h1 className={`text-3xl lg:text-4xl font-bold text-red-500 mb-4 lg:mb-6 text-center ${audiowide.className}`}>
                     EVENT DETAILS
                 </h1>
@@ -110,29 +109,37 @@ const Page = () => {
                     Total Prize Pool
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    xxxx Rs
+                    Rs 32,500
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    Vivekananda Institute of Technology
+                    Room 202
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
-                    Time
+                    Date and Time
                 </h2>
+                <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>
+                    27th Feb 2025
+                </h3>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
-                    10:00am
+                    10:00 AM to 5:00 PM
                 </h3>
 
-                {/* Registration Button */}
-                <motion.div className='space-y-4' variants={itemVariants}>
-                    <button className={`block w-full lg:w-64 mx-auto bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}>
-                        Registration Form
-                    </button>
+                <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
+                    <Link href='https://unstop.com/p/blindfold-bytes-vivekananda-institute-of-professional-studies-vips-delhi-1392451' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Registration Form
+                        </button>
+                    </Link>
+                    <Link href='https://docs.google.com/document/d/1jN7Ew0F2ZeeV2RjWqIYiaySPXUgsAUfs/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Event Details
+                        </button>
+                    </Link>
                 </motion.div>
             </motion.div>
-
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`
                 ::-webkit-scrollbar {

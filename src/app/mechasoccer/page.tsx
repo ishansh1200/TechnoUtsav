@@ -6,9 +6,15 @@ import { Orbitron, Audiowide } from 'next/font/google';
 import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg23 from './backgrounds/bg23.jpg';
+import Link from 'next/link';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
 const Page = () => {
     return (
@@ -108,29 +114,36 @@ const Page = () => {
                     Total Prize Pool
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    50000 Rs
+                    Rs 60,000
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    Vivekananda Institute of Technology 
+                    Room 108 
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
-                    Time
+                    Date and Time
                 </h2>
-                <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
-                    10:00am
+                <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>
+                    28th Feb 2025
                 </h3>
-                <div className='space-y-4'>
-                    <motion.button 
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className={`block w-full lg:w-64 mx-auto bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
-                    >
-                        Registration Form
-                    </motion.button>
-                </div>
+                <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
+                    12:00 Pm to 5:00 PM
+                </h3>
+
+                <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
+                    <Link href='https://unstop.com/p/mechasoccer-robo-soccer-vivekananda-institute-of-professional-studies-vips-delhi-1394411' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Registration Form
+                        </button>
+                    </Link>
+                    <Link href='https://docs.google.com/document/d/1hcn9x137QIU3TVjkJ5GQ_sAGQciWU2TU/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Event Details
+                        </button>
+                    </Link>
+                </motion.div>
             </motion.div>
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`

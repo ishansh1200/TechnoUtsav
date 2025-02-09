@@ -6,6 +6,7 @@ import { Orbitron, Audiowide } from 'next/font/google';
 import { motion } from 'framer-motion';
 import bg11 from './backgrounds/bg11.jpg';
 import bg14 from './backgrounds/bg14.jpg';
+import Link from 'next/link';
 
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
@@ -114,30 +115,36 @@ const Page = () => {
                     Total Prize Pool
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    xxxx Rs
+                    Rs 36,500
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    Vivekananda Institute of Technology 
+                    Rooms 408, 410 
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Time
                 </h2>
+                <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>
+                    28th Feb 2025
+                </h3>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
-                    10:00am
+                    10:00 AM to 5 PM
                 </h3>
 
-                <div className='space-y-4'>
-                    <motion.button 
-                        whileHover={{ scale: 1.1 }} 
-                        whileTap={{ scale: 0.95 }} 
-                        className={`block w-full lg:w-64 mx-auto bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all ${orbitron.className}`}
-                    >
-                        Registration Form
-                    </motion.button>
-                </div>
+                <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
+                    <Link href='https://unstop.com/p/crack-the-code-vivekananda-institute-of-professional-studies-vips-delhi-1392455' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Registration Form
+                        </button>
+                    </Link>
+                    <Link href='https://docs.google.com/document/d/1jW6gKUU8sxfFIHfxk0TvSG9u2vqJUhQu/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true' passHref>
+                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
+                            Event Details
+                        </button>
+                    </Link>
+                </motion.div>
             </motion.div>
 
             <style jsx global>{`
