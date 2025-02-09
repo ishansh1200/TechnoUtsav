@@ -7,7 +7,6 @@ import React, { useState, useEffect } from "react";
 const playFairDisplay = Poppins({ subsets: ["latin"], weight: "500" });
 
 const Navbar = () => {
-  const controls = useAnimation();
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
