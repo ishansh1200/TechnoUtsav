@@ -94,7 +94,7 @@ const Page = () => {
         <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>Rs 30,000</h3>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Venue</h2>
         <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-          Rooms 203, 403
+          VIPS-TC Rooms 203, 403
         </h3>
         <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Date and Time</h2>
         <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>27th Feb 2025</h3>

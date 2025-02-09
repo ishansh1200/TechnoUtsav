@@ -120,7 +120,7 @@ const Page = () => {
                     Venue
                 </h2>
                 <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    Room 108 
+                    VIPS-TC Room 108 
                 </h3>
                 <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
                     Date and Time
