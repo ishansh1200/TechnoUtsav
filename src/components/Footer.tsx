@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <footer className="bg-black bg-opacity-65 text-white py-4 text-center border-t border-gray-700 z-[999]">
+        <footer className="bg-black opacity-65 bg-opacity-15 text-white py-4 text-center border-t border-gray-700 z-top">
             <p className="font-lg">
                 &copy; {new Date().getFullYear()} {" "}
                 <a 
@@ -20,14 +20,18 @@ const Footer = () => {
                     target = "_blank" 
                     rel = "noopener noreferrer" 
                     className = "ml-1"
-                > Ishan Sharma </a> {" "}
+                > 
+                    Ishan Sharma 
+                </a> {" "}
                 and {" "}
                 <a 
                     href = "https://www.linkedin.com/in/utsavsinghal2604/" 
                     target = "_blank" 
                     rel = "noopener noreferrer" 
                     className = "ml-1"
-                > Utsav Singhal </a>.
+                > 
+                    Utsav Singhal 
+                </a>.
             </p>
         </footer>
     );

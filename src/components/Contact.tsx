@@ -7,7 +7,8 @@ import { FaDiscord, FaInstagram, FaLinkedin } from 'react-icons/fa'
 const Contact = () => {
     return (
         <motion.div 
-            className="flex flex-col md:flex-row justify-between items-center text-white opacity-75 pt-10 px-10 w-full mx-auto bg-black bg-opacity-20"
+            className="flex flex-col md:flex-row justify-between items-center text-white opacity-75 pt-10 px-10 w-full 
+            mx-auto bg-black bg-opacity-20"
             id = "Contact"
         >
             {/* College Address Section - Left Side */}
