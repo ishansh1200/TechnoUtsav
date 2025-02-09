@@ -24,15 +24,7 @@ const Navbar = () => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      const offsetTop = targetElement.offsetTop;
-      await controls.start({
-        y: offsetTop * -1,
-        transition: { duration: 0.8, ease: "easeInOut" },
-      });
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 

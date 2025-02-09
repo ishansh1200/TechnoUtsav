@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Waves from "./Waves";
 import { usePathname } from "next/navigation"; 
 import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   const colors = [
@@ -125,9 +126,10 @@ export default function Home() {
       <motion.div  className="relative z-10 w-full px-4 sm:px-8 flex flex-col" id="eventdetails">
         <Sponsors />
       </motion.div>
-
-      {/* Footer */}
+      <Contact />
       <Footer />
+      {/* Footer */}
+
     </div>
   );
 }

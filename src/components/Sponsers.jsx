@@ -36,16 +36,18 @@ function Sponsors() {
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
             variants={containerVariants}
-            className="pt-32 pb-20 mt-24 h-auto w-full text-white flex flex-col items-center justify-center z-[-10]"
+            className="pt-32 pb-20 mt-24 h-auto w-full text-white flex flex-col items-center justify-center z-[999]"
         >
             {/* Main Heading */}
             <motion.h1
+                id = "sponsors"
                 variants={{
                     hidden: { opacity: 0, y: -50, scale: 0.8, rotate: -5 },
                     visible: { opacity: 1, y: 0, scale: 1, rotate: 0 },
                 }}
                 transition={{ type: "spring", stiffness: 120, damping: 8 }}
                 className={`${audiowide.className} text-[6vh] sm:text-[12vh] mb-8 sm:mb-14 text-center leading-tight`}
+                
             >
                 SPONSORS
             </motion.h1>
@@ -55,11 +57,11 @@ function Sponsors() {
                 className={`${orbitron.className} flex flex-col items-center gap-y-16 sm:gap-y-20 w-full max-w-[90%] sm:max-w-[70%]`}
                 variants={containerVariants}
             >
-                {["TITLE SPONSOR", "CO-SPONSOR", "ASSOCIATE SPONSOR", "PARTNER"].map((tier, index) => (
+                {["COMING SOON..."].map((tier, index) => (
                     <motion.h2
                         key={tier}
                         variants={itemVariants}
-                        className="text-3xl sm:text-[6vh] text-gray-300 opacity-75 text-center"
+                        className="text-3xl sm:text-[6vh] text-gray-300 opacity-75 text-center mb-10 pb-10"
                     >
                         {tier}
                     </motion.h2>
