@@ -6,11 +6,14 @@ import { FaLinkedin, FaDiscord, FaInstagram, FaBars, FaTimes } from "react-icons
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolling(window.scrollY > 50);
     };
+
+
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
