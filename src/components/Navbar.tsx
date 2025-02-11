@@ -5,15 +5,13 @@ import React, { useState, useEffect } from "react";
 import { FaLinkedin, FaDiscord, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [setScrolling] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [scrolling, setScrolling] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolling(window.scrollY > 50);
     };
-
-
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -34,12 +32,13 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 w-full bg-blue-950 bg-opacity-80 backdrop-blur-md shadow-md z-[9999] transition-all duration-300"
+      className={`fixed top-0 left-0 w-full bg-blue-950 bg-opacity-80 backdrop-blur-md shadow-md z-[9999] transition-all duration-300 ${
+        scrolling ? "shadow-lg" : ""
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 120, damping: 15 }}
     >
-      {/* Animated Container - Controls Navbar Height */}
       <motion.div
         className="overflow-hidden"
         animate={{ height: menuOpen ? "auto" : "4rem" }}
@@ -48,7 +47,6 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-6 md:px-10 lg:px-12 py-4">
           <div className="text-gray-100 font-bold text-3xl">Innoवृत्ति</div>
 
-          {/* Mobile Menu Button */}
           <motion.div className="md:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -58,7 +56,6 @@ const Navbar = () => {
             </button>
           </motion.div>
 
-          {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-10">
             {links.map((link) => (
               <a
@@ -72,7 +69,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Social Links */}
           <div className="hidden md:flex items-center gap-6">
             <a href="https://www.linkedin.com/company/inno%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF/" target="_blank" rel="noopener noreferrer"
               className="text-gray-100 hover:text-white text-lg transform hover:scale-125 hover:[text-shadow:_0_0_10px_rgba(255,255,255,0.8)]">
@@ -89,7 +85,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu - Smooth Drop Down */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
