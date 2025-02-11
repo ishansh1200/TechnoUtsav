@@ -8,8 +8,7 @@ import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import bg30 from "./bg30.jpg";
 
-export default function Home() {
-  const pathname = usePathname(); 
+export default function Home() { 
 
   return (
     <div 

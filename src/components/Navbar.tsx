@@ -1,11 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { links } from "../../lib/data";
-import { Poppins } from "next/font/google";
 import React, { useState, useEffect } from "react";
 import { FaLinkedin, FaDiscord, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
 
-const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
