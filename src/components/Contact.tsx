@@ -8,7 +8,7 @@ const Contact = () => {
     return (
         <motion.div 
             className="flex flex-col justify-center items-center text-white opacity-75 pt-10 px-10 w-full 
-            mx-auto bg-black bg-opacity-20 text-center"
+            mx-auto bg-black bg-opacity-50 text-center"
             id="Contact"
         >
             {/* College Address Section - Top */}
