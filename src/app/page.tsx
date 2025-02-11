@@ -22,7 +22,7 @@ export default function Home() {
       {/* Main Content with TextBox */}
       <div
         id="home"
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen bg-black bg-opacity-15 w-full overflow-hidden"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen bg-[#000435] bg-opacity-55 w-full overflow-hidden"
       >
         <TextBox />
       </div>
