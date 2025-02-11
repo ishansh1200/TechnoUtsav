@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import { FaLinkedin, FaDiscord, FaInstagram, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  const [scrolling, setScrolling] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
