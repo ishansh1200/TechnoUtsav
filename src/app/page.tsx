@@ -2,8 +2,7 @@
 import Navbar from "@/components/Navbar";
 import TextBox from "@/components/TextBox";
 import Events from "@/components/Events";
-import Sponsors from "@/components/Sponsers";
-import { usePathname } from "next/navigation"; 
+import Sponsors from "@/components/Sponsers"; 
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import bg30 from "./bg30.jpg";
