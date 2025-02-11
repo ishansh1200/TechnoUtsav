@@ -6,7 +6,7 @@ import { FaLinkedin, FaDiscord, FaInstagram, FaBars, FaTimes } from "react-icons
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [_ , setScrolling] = useState(false);
+  const [setScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
