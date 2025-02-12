@@ -2,15 +2,15 @@
 import Navbar from "@/components/Navbar";
 import TextBox from "@/components/TextBox";
 import Events from "@/components/Events";
-import Sponsors from "@/components/Sponsers"; 
+import Sponsors from "@/components/Sponsers";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
 import bg30 from "./bg30.jpg";
 
-export default function Home() { 
+export default function Home() {
 
   return (
-    <div 
+    <div
       className="min-h-screen relative overflow-hidden bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${bg30.src})`, backgroundSize: "cover", backgroundPosition: "center center" }}
     >
@@ -28,20 +28,22 @@ export default function Home() {
       </div>
 
       {/* Events Section */}
-      <div className="relative z-10 w-full px-4 sm:px-8 flex items-center text-center bg-black bg-opacity-15" id="eventdetails">
+      <div className="relative z-10 w-full px-4 sm:px-8 flex items-center text-center bg-[#000435] bg-opacity-55" id="eventdetails">
         <Events />
       </div>
 
       {/* Sponsors Section */}
-      <div className="relative z-10 w-full px-4 sm:px-8 flex flex-col bg-black bg-opacity-15" id="sponsors">
+      <div className="relative z-10 w-full px-4 sm:px-8 flex flex-col bg-[#000435] bg-opacity-55" id="sponsors">
         <Sponsors />
       </div>
-      
+
       {/* Contact Section */}
       <Contact />
-      
+
       {/* Footer */}
-      <Footer />
+      <div className = 'bg'>
+        <Footer />
+      </div>
     </div>
   );
 }

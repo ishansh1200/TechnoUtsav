@@ -17,17 +17,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleScrollClick = async (
+  const handleScrollClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
   ) => {
     e.preventDefault();
-    const targetElement = document.getElementById(targetId);
+    setMenuOpen(false); 
 
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-      setMenuOpen(false);
-    }
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const navbarHeight = document.querySelector("nav")?.clientHeight || 0;
+        const targetPosition = targetElement.offsetTop - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 400);
   };
 
   return (
@@ -44,17 +52,8 @@ const Navbar = () => {
         animate={{ height: menuOpen ? "auto" : "4rem" }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-        <div className="flex justify-between items-center px-6 md:px-10 lg:px-12 py-4">
+        <div className="flex justify-between items-center px-6 md:px-10 lg:px-12 py-4 w-full max-w-7xl mx-auto">
           <div className="text-gray-100 font-bold text-3xl">Innoवृत्ति</div>
-
-          <motion.div className="md:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-100 text-2xl focus:outline-none"
-            >
-              {menuOpen ? <FaTimes /> : <FaBars />}
-            </button>
-          </motion.div>
 
           <div className="hidden md:flex items-center gap-10">
             {links.map((link) => (
@@ -69,26 +68,29 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-6">
-            <a href="https://www.linkedin.com/company/inno%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF/" target="_blank" rel="noopener noreferrer"
-              className="text-gray-100 hover:text-white text-lg transform hover:scale-125 hover:[text-shadow:_0_0_10px_rgba(255,255,255,0.8)]">
-              <FaLinkedin size={24} />
-            </a>
-            <a href="https://discord.gg/Pxfak7sF" target="_blank" rel="noopener noreferrer"
-              className="text-gray-100 hover:text-white text-lg transform hover:scale-125 hover:[text-shadow:_0_0_10px_rgba(255,255,255,0.8)]">
-              <FaDiscord size={24} />
-            </a>
-            <a href="https://www.instagram.com/innovriti.vips/" target="_blank" rel="noopener noreferrer"
-              className="text-gray-100 hover:text-white text-lg transform hover:scale-125 hover:[text-shadow:_0_0_10px_rgba(255,255,255,0.8)]">
-              <FaInstagram size={24} />
-            </a>
+          {/* Social Icons */}
+          <div className="hidden md:flex items-center gap-6 text-gray-100 text-xl">
+            <a href="https://www.linkedin.com/company/inno%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF/" className="hover:text-white transition-all duration-200"><FaLinkedin /></a>
+            <a href="https://discord.gg/Pxfak7sF" className="hover:text-white transition-all duration-200"><FaDiscord /></a>
+            <a href="https://www.instagram.com/innovriti.vips/" className="hover:text-white transition-all duration-200"><FaInstagram /></a>
           </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <motion.div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-gray-100 text-2xl focus:outline-none"
+            >
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </motion.div>
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="md:hidden bg-blue-950 bg-opacity-90 py-4 flex flex-col items-center gap-4"
+              className="md:hidden bg-blue-950 bg-opacity-90 py-4 flex flex-col items-center gap-4 z-999"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -104,19 +106,10 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="flex gap-6 mt-3">
-                <a href="https://www.linkedin.com/company/inno%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF/" target="_blank" rel="noopener noreferrer"
-                  className="text-gray-100 hover:text-white text-lg transform hover:scale-110">
-                  <FaLinkedin size={24} />
-                </a>
-                <a href="https://discord.gg/Pxfak7sF" target="_blank" rel="noopener noreferrer"
-                  className="text-gray-100 hover:text-white text-lg transform hover:scale-110">
-                  <FaDiscord size={24} />
-                </a>
-                <a href="https://www.instagram.com/innovriti.vips/" target="_blank" rel="noopener noreferrer"
-                  className="text-gray-100 hover:text-white text-lg transform hover:scale-110">
-                  <FaInstagram size={24} />
-                </a>
+              <div className="flex gap-6 mt-4 text-gray-100 text-xl">
+                <a href="https://www.linkedin.com/company/inno%E0%A4%B5%E0%A5%83%E0%A4%A4%E0%A5%8D%E0%A4%A4%E0%A4%BF/" className="hover:text-white transition-all duration-200"><FaLinkedin /></a>
+                <a href="https://discord.gg/Pxfak7sF" className="hover:text-white transition-all duration-200"><FaDiscord /></a>
+                <a href="https://www.instagram.com/innovriti.vips/" className="hover:text-white transition-all duration-200"><FaInstagram /></a>
               </div>
             </motion.div>
           )}
@@ -125,5 +118,4 @@ const Navbar = () => {
     </motion.nav>
   );
 };
-
 export default Navbar;

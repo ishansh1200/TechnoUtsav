@@ -49,7 +49,7 @@ const EventCard = ({ event, isLast }) => {
     <motion.div
       className={`relative flex w-72 sm:w-80 md:w-[40vh] lg:w-[50vh] 
       h-[50vh] sm:h-[55vh] md:h-[68vh] lg:h-[72vh] 
-      flex-col rounded-3xl bg-black bg-opacity-75 text-white transition-all duration-300 
+      flex-col rounded-3xl bg-[#06063d] bg-opacity- text-white transition-all duration-300 
       items-center justify-between p-4 sm:p-6 md:p-8 overflow-hidden 
       -ml-10 sm:-ml-6 md:-ml-8 ${isLast ? "mb-10 sm:mb-16 md:mb-20 lg:mb-24" : ""}`}
       initial={{ scale: 1, opacity: 1 }}
