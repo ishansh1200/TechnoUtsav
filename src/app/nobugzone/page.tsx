@@ -54,7 +54,7 @@ const Page = () => {
                     </h1>
                     <div className="text-lg lg:text-xl text-cyan-100 space-y-5">
                         <p className="leading-relaxed">
-                            The Code Debugging Challenge is a thrilling on-the-spot coding competition where participants form teams and work together to solve problems, only to have their code "bugged" by event organizers.
+                            The Code Debugging Challenge is a thrilling on-the-spot coding competition where participants form teams and work together to solve problems, only to have their code &quot;bugged&quot; by event organizers.
                         </p>
                         <ul className="space-y-4">
                             {[
