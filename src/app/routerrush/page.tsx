@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Image from "next/image"
 import { motion } from "framer-motion"
@@ -7,156 +7,220 @@ import bg11 from "./backgrounds/bg11.jpg"
 import bg15 from "./backgrounds/bg15.jpg"
 import Link from "next/link"
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
 const orbitron = Orbitron({ subsets: ["latin"], weight: "700" })
 const audiowide = Audiowide({ subsets: ["latin"], weight: "400" })
 
+const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+}
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
 const Page = () => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 pt-6 lg:pt-10 text-gray-200 bg-black bg-opacity-40"
-    >
-      <div className="absolute inset-0 -z-10">
-        <Image src={bg11 || "/placeholder.svg"} alt="Background" layout="fill" objectFit="cover" quality={100} />
-      </div>
+    return (
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            className="relative flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 pt-6 lg:pt-10 text-gray-200 overflow-hidden"
+        >
+            {/* Enhanced Background with Gradient Overlay */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-black bg-opacity-35 z-0" />
+                <Image
+                    src={bg11}
+                    alt="Background"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
+                    className="scale-100 lg:scale-105 transition-transform duration-10000 ease-in-out -z-10"
+                />
+            </div>
 
-      {/* Left Section */}
-      <div className="flex-1 lg:ml-8 lg:mr-4 mb-8 lg:mb-0 overflow-y-auto">
-        {/* First Box */}
-        <div className="bg-black bg-opacity-50 p-4 lg:p-6 rounded-lg mb-8">
-          <h1 className={`text-3xl lg:text-4xl font-bold text-cyan-400 mb-4 lg:mb-6 ${orbitron.className}`}>
-            ROBO LINE-UP COMPETITION 2025
-          </h1>
-          <div className="text-base lg:text-lg text-gray-300 mb-4 lg:mb-6 space-y-4">
-            <p>
-              The Robo Line-Up Competition 2025 is an exhilarating showcase of robotic engineering and precision
-              programming, centered on the challenge of line following. Participants design and build robots capable of
-              detecting and navigating a predefined path with unmatched accuracy and speed.
-            </p>
-            <ul className="list-disc list-inside">
-              <li>Navigate the path to victory with our Fast Line Follower Robot challenge!</li>
-              <li>Program your robot to follow the twists and turns of the track with precision and speed.</li>
-              <li>
-                Robots must autonomously follow a marked line, handling sharp turns, curves, and obstacles as they race
-                against time.
-              </li>
-              <li>
-                The event emphasizes innovation, control algorithms, and fine-tuned hardware design to achieve optimal
-                performance.
-              </li>
-              <li>Participants will showcase their skills in robotic engineering, programming, and problem-solving.</li>
-              <li>This competition is a platform to demonstrate creativity, technical expertise, and teamwork.</li>
-              <li>Engage with fellow robotics enthusiasts, exchange ideas, and learn from industry experts.</li>
-              <li>The competition promises an exciting and challenging experience for all participants.</li>
-            </ul>
-          </div>
-        </div>
+            {/* Left Section */}
+            <motion.div className="flex-1 lg:ml-8 lg:mr-4 mb-8 lg:mb-0 overflow-y-auto" variants={fadeIn}>
+                {/* First Box - Enhanced with Glassmorphism */}
+                <motion.div
+                    className="bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl mb-8 backdrop-blur-lg border border-gray-600 transition-all"
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.005 }}
+                >
+                    <h1 className={`text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
+                        ROBO LINE-UP COMPETITION 2025
+                    </h1>
+                    <div className="text-lg lg:text-xl text-cyan-100 space-y-5">
+                        <p className="leading-relaxed">
+                            The Robo Line-Up Competition 2025 is an exhilarating showcase of robotic engineering and precision
+                            programming, centered on the challenge of line following. Participants design and build robots capable of
+                            detecting and navigating a predefined path with unmatched accuracy and speed.
+                        </p>
+                        <ul className="space-y-4">
+                            {[
+                                "Navigate the path to victory with our Fast Line Follower Robot challenge!",
+                                "Program your robot to follow the twists and turns of the track with precision and speed.",
+                                "Robots must autonomously follow a marked line, handling sharp turns, curves, and obstacles as they race against time.",
+                                "The event emphasizes innovation, control algorithms, and fine-tuned hardware design to achieve optimal performance.",
+                                "Participants will showcase their skills in robotic engineering, programming, and problem-solving.",
+                                "This competition is a platform to demonstrate creativity, technical expertise, and teamwork.",
+                                "Engage with fellow robotics enthusiasts, exchange ideas, and learn from industry experts.",
+                                "The competition promises an exciting and challenging experience for all participants."
+                            ].map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    className="flex items-start gap-3"
+                                    variants={itemVariants}
+                                >
+                                    <span className="text-cyan-400 mt-1">▹</span>
+                                    {item}
+                                </motion.li>
+                            ))}
+                        </ul>
+                    </div>
+                </motion.div>
 
-        {/* Second Box */}
-        <div className="bg-black bg-opacity-50 p-4 lg:p-6 rounded-lg">
-          <h1 className={`text-3xl lg:text-4xl font-bold text-cyan-400 mb-4 lg:mb-6 ${orbitron.className}`}>
-            ADVANTAGES OF PARTICIPATING
-          </h1>
-          <div className="text-base lg:text-lg text-gray-300 mb-4 lg:mb-6">
-            <ul className="list-disc list-inside">
-              <li>Enhance your skills in robotics, programming, and hardware design.</li>
-              <li>Gain hands-on experience in building and programming autonomous robots.</li>
-              <li>Network with robotics enthusiasts and industry professionals.</li>
-              <li>Opportunity to win exciting prizes and gain recognition.</li>
-              <li>Improve your resume with a prestigious robotics competition experience.</li>
-            </ul>
-          </div>
-          <h2 className={`text-xl lg:text-2xl font-bold text-cyan-400 mb-2 lg:mb-4 ${orbitron.className}`}>
-            PARTICIPATION CRITERIA
-          </h2>
-          <div className="text-base lg:text-lg text-gray-300 mb-4 lg:mb-6">
-            <ul className="list-disc list-inside">
-              <li>Basic understanding of robotics and programming (e.g., Arduino, Raspberry Pi, Python).</li>
-              <li>Familiarity with sensors, motors, and control algorithms.</li>
-              <li>Enthusiasm to learn and solve real-world robotics challenges.</li>
-              <li>Open to individuals and teams (up to 4 members).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+                {/* Second Box - Enhanced */}
+                <motion.div
+                    className="bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl backdrop-blur-lg border border-cyan-400/30 hover:border-cyan-400/50 transition-all"
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.005 }}
+                >
+                    <h1 className={`text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
+                        ADVANTAGES OF PARTICIPATING
+                    </h1>
+                    <ul className="space-y-4 text-cyan-100">
+                        {[
+                            "Enhance your skills in robotics, programming, and hardware design",
+                            "Gain hands-on experience in building and programming autonomous robots",
+                            "Network with robotics enthusiasts and industry professionals",
+                            "Opportunity to win exciting prizes and gain recognition",
+                            "Improve your resume with a prestigious robotics competition experience"
+                        ].map((item, i) => (
+                            <motion.li
+                                key={i}
+                                className="flex items-start gap-3"
+                                variants={itemVariants}
+                            >
+                                <span className="text-cyan-400 mt-1">▹</span>
+                                {item}
+                            </motion.li>
+                        ))}
+                    </ul>
 
-      {/* Right Section */}
-      <div className="w-full lg:w-[35%] bg-black bg-opacity-50 p-4 lg:p-8 rounded-lg lg:mr-8 h-auto lg:h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto">
-        {/* Top 20% with bg15 Image */}
-        <div className="h-48 lg:h-[35%] relative mb-6">
-          <Image
-            src={bg15 || "/placeholder.svg"}
-            alt="Top Background"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-          />
-        </div>
+                    <h2 className={`text-2xl lg:text-3xl font-bold mt-8 mb-4 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
+                        PARTICIPATION CRITERIA
+                    </h2>
+                    <ul className="space-y-4 text-cyan-100">
+                        {[
+                            "Basic understanding of robotics and programming (e.g., Arduino, Raspberry Pi, Python)",
+                            "Familiarity with sensors, motors, and control algorithms",
+                            "Enthusiasm to learn and solve real-world robotics challenges",
+                            "Open to individuals and teams (up to 4 members)"
+                        ].map((item, i) => (
+                            <motion.li
+                                key={i}
+                                className="flex items-start gap-3"
+                                variants={itemVariants}
+                            >
+                                <span className="text-cyan-400 mt-1">▹</span>
+                                {item}
+                            </motion.li>
+                        ))}
+                    </ul>
+                </motion.div>
+            </motion.div>
 
-        {/* Content */}
-        <h1 className={`text-3xl lg:text-4xl font-bold text-red-500 mb-4 lg:mb-6 text-center ${audiowide.className}`}>
-          EVENT DETAILS
-        </h1>
-        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Total Prize Pool</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>Rs 60,000</h3>
-        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Venue</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-          VIPS-TC Room 108
-        </h3>
-        <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>Date and Time</h2>
-        <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>27th Feb 2025</h3>
-        <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>12:00 PM to 5:00 PM</h3>
+            {/* Right Section - Enhanced */}
+            <motion.div
+                className="w-full lg:w-[35%] bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl lg:mr-8 h-auto lg:h-[85vh] border-2 border-cyan-400/30 backdrop-blur-lg mt-5 overflow-y-auto hover:border-cyan-400/50 transition-all"
+                variants={fadeIn}
+                whileHover={{ scale: 1.005 }}
+            >
+                {/* Top Image Section */}
+                <div className="h-48 lg:h-[35%] relative mb-8 rounded-xl overflow-hidden group">
+                    <Image
+                        src={bg15}
+                        alt="Top Background"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-xl transform transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                </div>
 
-        {/* Registration Button */}
-        <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
-                    <Link href=' https://unstop.com/p/routerush-robo-line-up-vivekananda-institute-of-professional-studies-vips-delhi-1392458' passHref>
-                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
-                            Registration Form
-                        </button>
-                    </Link>
-                    <Link href='https://docs.google.com/document/d/1jwYnF4gekJ9NDEOUbIKh1VOSSBwln5th/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true ' passHref>
-                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
-                            Event Details
-                        </button>
-                    </Link>
-        </motion.div>
-      </div>
-      {/* Custom Scrollbar Styles */}
-      <style jsx global>{`
+                {/* Content Section */}
+                <div className="space-y-8">
+                    <h1 className={`text-4xl font-bold text-center mb-8 bg-gradient-to-r from-red-500 to-rose-600 bg-clip-text text-transparent ${audiowide.className}`}>
+                        EVENT DETAILS
+                    </h1>
+
+                    <div className="space-y-6">
+                        <div className="border-b border-cyan-400/30 pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Total Prize Pool</h2>
+                            <h3 className={`text-2xl font-bold text-amber-400 ${orbitron.className}`}>₹60,000</h3>
+                        </div>
+
+                        <div className="border-b border-cyan-400/30 pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Venue</h2>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>VIPS-TC Room 108</h3>
+                        </div>
+
+                        <div className="pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Date and Time</h2>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>27th Feb 2025</h3>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>12:00 PM to 5:00 PM</h3>
+                        </div>
+                    </div>
+
+                    {/* Registration Buttons - Enhanced */}
+                    <motion.div
+                        className="grid grid-cols-1 gap-4"
+                        variants={itemVariants}
+                    >
+                        {[
+                            { href: 'https://unstop.com/p/routerush-robo-line-up-vivekananda-institute-of-professional-studies-vips-delhi-1392458', text: 'Registration Form' },
+                            { href: 'https://docs.google.com/document/d/1jwYnF4gekJ9NDEOUbIKh1VOSSBwln5th/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true', text: 'Event Details' }
+                        ].map((link, i) => (
+                            <Link key={i} href={link.href} passHref>
+                                <motion.button
+                                    whileHover={{ y: -2 }}
+                                    className="w-full bg-cyan-700/80 text-white py-3 px-6 rounded-xl text-lg font-semibold text-center hover:bg-cyan-600 transition-all border border-cyan-400/30 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20"
+                                >
+                                    {link.text}
+                                </motion.button>
+                            </Link>
+                        ))}
+                    </motion.div>
+                </div>
+            </motion.div>
+
+            {/* Custom Scrollbar Styles */}
+            <style jsx global>{`
                 ::-webkit-scrollbar {
                     width: 8px;
                 }
-
                 ::-webkit-scrollbar-track {
-                    background: #1a1a1a;
+                    background: #0a1a1f;
                     border-radius: 10px;
                 }
-
                 ::-webkit-scrollbar-thumb {
-                    background: #00ffff;
+                    background: linear-gradient(to bottom, #00ffff, #0066ff);
                     border-radius: 10px;
-                    border: 2px solid #1a1a1a;
+                    border: 2px solid #0a1a1f;
                 }
-
                 ::-webkit-scrollbar-thumb:hover {
-                    background: #00cccc;
+                    background: linear-gradient(to bottom, #00cccc, #0055cc);
                 }
-
                 @media (max-width: 768px) {
                     ::-webkit-scrollbar {
                         width: 4px;
                     }
                 }
             `}</style>
-    </motion.div>
-  )
-}
+        </motion.div>
+    );
+};
 
 export default Page;

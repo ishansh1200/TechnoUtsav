@@ -11,141 +11,186 @@ import Link from 'next/link';
 const orbitron = Orbitron({ subsets: ['latin'], weight: '700' });
 const audiowide = Audiowide({ subsets: ['latin'], weight: '400' });
 
-const containerVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            delayChildren: 0.2,
-            staggerChildren: 0.2
-        }
-    }
-};
+const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+}
 
 const itemVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 const Page = () => {
     return (
         <motion.div
-            className='relative flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 pt-6 lg:pt-10 text-gray-200 bg-black bg-opacity-40'
-            initial='hidden'
-            animate='visible'
-            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 pt-6 lg:pt-10 text-gray-200 overflow-hidden"
         >
-            <div className='absolute inset-0 -z-10'>
+            {/* Enhanced Background with Gradient Overlay */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-black bg-opacity-35 z-0" />
                 <Image
-                    src={bg11 || "/placeholder.svg"}
-                    alt='Background'
-                    layout='fill'
-                    objectFit='cover'
+                    src={bg11}
+                    alt="Background"
+                    layout="fill"
+                    objectFit="cover"
                     quality={100}
+                    className="scale-100 lg:scale-105 transition-transform duration-10000 ease-in-out -z-10"
                 />
             </div>
 
             {/* Left Section */}
-            <motion.div className='flex-1 lg:ml-8 lg:mr-4 mb-8 lg:mb-0 overflow-y-auto' variants={itemVariants}>
-                {/* First Box */}
-                <motion.div className='bg-black bg-opacity-50 p-4 lg:p-6 rounded-lg mb-8' variants={itemVariants}>
-                    <h1 className={`text-3xl lg:text-4xl font-bold text-cyan-400 mb-4 lg:mb-6 ${orbitron.className}`}>
+            <motion.div className="flex-1 lg:ml-8 lg:mr-4 mb-8 lg:mb-0 overflow-y-auto" variants={fadeIn}>
+                {/* First Box - Enhanced with Glassmorphism */}
+                <motion.div
+                    className="bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl mb-8 backdrop-blur-lg border border-gray-600 transition-all"
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.005 }}
+                >
+                    <h1 className={`text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
                         CAMPUS QUEST
                     </h1>
-                    <div className='text-base lg:text-lg text-gray-300 mb-4 lg:mb-6 space-y-4'>
-                        <p>Campus Quest is an exhilarating, campus-wide treasure hunt designed to ignite your curiosity and challenge your problem-solving skills. This event combines adventure, teamwork, and intellectual challenges, creating an unforgettable experience for participants.</p>
-                        <ul className='list-disc list-inside'>
-                            <li>Clues are hidden all over the campus, waiting for you to find them.</li>
-                            <li>Each clue comes with a question—solve it correctly to find the next location.</li>
-                            <li>Continue solving clues until you uncover the final treasure!</li>
-                            <li>Designed for puzzle pros and challenge lovers alike.</li>
-                            <li>Test your brains and teamwork in a fun, engaging environment.</li>
-                            <li>Put on your thinking caps, grab your friends, and explore the campus.</li>
+                    <div className="text-lg lg:text-xl text-cyan-100 space-y-5">
+                        <p className="leading-relaxed">
+                            Campus Quest is an exhilarating, campus-wide treasure hunt designed to ignite your curiosity and challenge your problem-solving skills. This event combines adventure, teamwork, and intellectual challenges, creating an unforgettable experience for participants.
+                        </p>
+                        <ul className="space-y-4">
+                            {[
+                                "Clues hidden across campus waiting to be discovered",
+                                "Each clue contains a question to solve for progression",
+                                "Chain-solving leads to ultimate treasure discovery",
+                                "Designed for puzzle enthusiasts and challenge seekers",
+                                "Tests both individual intellect and team collaboration",
+                                "Encourages exploration of campus landmarks"
+                            ].map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    className="flex items-start gap-3"
+                                    variants={itemVariants}
+                                >
+                                    <span className="text-cyan-400 mt-1">▹</span>
+                                    {item}
+                                </motion.li>
+                            ))}
                         </ul>
                     </div>
                 </motion.div>
 
-                {/* Second Box */}
-                <motion.div className='bg-black bg-opacity-50 p-4 lg:p-6 rounded-lg' variants={itemVariants}>
-                    <h1 className={`text-3xl lg:text-4xl font-bold text-cyan-400 mb-4 lg:mb-6 ${orbitron.className}`}>
+                {/* Second Box - Enhanced */}
+                <motion.div
+                    className="bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl backdrop-blur-lg border border-cyan-400/30 hover:border-cyan-400/50 transition-all"
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.005 }}
+                >
+                    <h1 className={`text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
                         ADVANTAGES OF PARTICIPATING
                     </h1>
-                    <div className='text-base lg:text-lg text-gray-300 mb-4 lg:mb-6'>
-                        <ul className='list-disc list-inside'>
-                            <li>Sharpen your problem-solving and critical thinking skills.</li>
-                            <li>Enhance teamwork and collaboration with friends and peers.</li>
-                            <li>Experience an adventurous and intellectually stimulating event.</li>
-                            <li>Discover hidden parts of your campus in a fun, engaging way.</li>
-                            <li>Compete for exciting prizes and campus-wide recognition.</li>
-                        </ul>
-                    </div>
-                    <h2 className={`text-xl lg:text-2xl font-bold text-cyan-400 mb-2 lg:mb-4 ${orbitron.className}`}>
+                    <ul className="space-y-4 text-cyan-100">
+                        {[
+                            "Sharpen problem-solving and critical thinking",
+                            "Enhance team collaboration and communication",
+                            "Experience adventurous intellectual challenges",
+                            "Discover hidden campus areas and history",
+                            "Compete for prestigious prizes and recognition"
+                        ].map((item, i) => (
+                            <motion.li
+                                key={i}
+                                className="flex items-start gap-3"
+                                variants={itemVariants}
+                            >
+                                <span className="text-cyan-400 mt-1">▹</span>
+                                {item}
+                            </motion.li>
+                        ))}
+                    </ul>
+
+                    <h2 className={`text-2xl lg:text-3xl font-bold mt-8 mb-4 bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent ${orbitron.className}`}>
                         PARTICIPATION CRITERIA
                     </h2>
-                    <div className='text-base lg:text-lg text-gray-300 mb-4 lg:mb-6'>
-                        <ul className='list-disc list-inside'>
-                            <li>Open to all students, no prior experience needed.</li>
-                            <li>Teams of up to 4 members are encouraged.</li>
-                            <li>Bring enthusiasm, curiosity, and a love for challenges!</li>
-                            <li>Comfortable attire and a campus map may be helpful.</li>
-                        </ul>
-                    </div>
+                    <ul className="space-y-4 text-cyan-100">
+                        {[
+                            "Open to all students regardless of experience",
+                            "Teams of up to 4 members recommended",
+                            "Requires enthusiasm and problem-solving mindset",
+                            "Comfortable attire and navigation tools suggested"
+                        ].map((item, i) => (
+                            <motion.li
+                                key={i}
+                                className="flex items-start gap-3"
+                                variants={itemVariants}
+                            >
+                                <span className="text-cyan-400 mt-1">▹</span>
+                                {item}
+                            </motion.li>
+                        ))}
+                    </ul>
                 </motion.div>
             </motion.div>
 
-            {/* Right Section */}
-            <motion.div className='w-full lg:w-[35%] bg-black bg-opacity-50 p-4 lg:p-8 rounded-lg lg:mr-8 h-auto lg:h-[85vh] border-2 border-cyan-400 mt-5 overflow-y-auto' variants={itemVariants}>
-                {/* Top 20% with bg13 Image */}
-                <motion.div className='h-48 lg:h-[35%] relative mb-6' variants={itemVariants}>
+            {/* Right Section - Enhanced */}
+            <motion.div
+                className="w-full lg:w-[35%] bg-black bg-opacity-25 p-6 lg:p-8 rounded-xl lg:mr-8 h-auto lg:h-[85vh] border-2 border-cyan-400/30 backdrop-blur-lg mt-5 overflow-y-auto hover:border-cyan-400/50 transition-all"
+                variants={fadeIn}
+                whileHover={{ scale: 1.005 }}
+            >
+                {/* Top Image Section */}
+                <div className="h-48 lg:h-[35%] relative mb-8 rounded-xl overflow-hidden group">
                     <Image
-                        src={bg13 || "/placeholder.svg"}
-                        alt='Top Background'
-                        layout='fill'
-                        objectFit='cover'
-                        className='rounded-lg'
+                        src={bg13}
+                        alt="Top Background"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-xl transform transition-transform duration-500 group-hover:scale-105"
                     />
-                </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                </div>
 
-                {/* Content */}
-                <h1 className={`text-3xl lg:text-4xl font-bold text-red-500 mb-4 lg:mb-6 text-center ${audiowide.className}`}>
-                    EVENT DETAILS
-                </h1>
-                <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
-                    Total Prize Pool
-                </h2>
-                <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    Rs 35,000
-                </h3>
-                <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
-                    Venue
-                </h2>
-                <h3 className={`text-lg font-bold text-yellow-400 mb-4 lg:mb-5 ${orbitron.className}`}>
-                    VIPS-TC Main Ground
-                </h3>
-                <h2 className={`text-xl font-bold text-cyan-400 mb-2 ${orbitron.className}`}>
-                    Date and Time
-                </h2>
-                <h3 className={`text-lg font-bold text-yellow-400 ${orbitron.className}`}>
-                    28th Feb 2025 {" "}
-                </h3>
-                <h3 className={`text-lg font-bold text-yellow-400 mb-6 lg:mb-10 ${orbitron.className}`}>
-                    10:00 AM to 5:00 PM
-                </h3>
+                {/* Content Section */}
+                <div className="space-y-8">
+                    <h1 className={`text-4xl font-bold text-center mb-8 bg-gradient-to-r from-red-500 to-rose-600 bg-clip-text text-transparent ${audiowide.className}`}>
+                        EVENT DETAILS
+                    </h1>
 
-                {/* Registration Button */}
-                <motion.div className='flex flex-col lg:flex-row justify-center gap-4' variants={itemVariants}>
-                    <Link href='https://unstop.com/p/campus-quest-vivekananda-institute-of-professional-studies-vips-delhi-1392453' passHref>
-                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
-                            Registration Form
-                        </button>
-                    </Link>
-                    <Link href='https://docs.google.com/document/d/1jRw622S68syOhtQNSm8KNurKe23yFqbe/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true' passHref>
-                        <button className='bg-cyan-600 text-white py-2 px-4 rounded-lg text-lg font-semibold text-center hover:bg-cyan-700 transition-all'>
-                            Event Details
-                        </button>
-                    </Link>
-                </motion.div>
+                    <div className="space-y-6">
+                        <div className="border-b border-cyan-400/30 pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Total Prize Pool</h2>
+                            <h3 className={`text-2xl font-bold text-amber-400 ${orbitron.className}`}>₹35,000</h3>
+                        </div>
+
+                        <div className="border-b border-cyan-400/30 pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Venue</h2>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>VIPS-TC Main Ground</h3>
+                        </div>
+
+                        <div className="pb-6">
+                            <h2 className={`text-xl font-bold text-cyan-300 mb-2 ${orbitron.className}`}>Date and Time</h2>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>28th Feb 2025</h3>
+                            <h3 className={`text-xl font-bold text-amber-400 ${orbitron.className}`}>10:00 AM to 5:00 PM</h3>
+                        </div>
+                    </div>
+
+                    {/* Registration Buttons - Enhanced */}
+                    <motion.div
+                        className="grid grid-cols-1 gap-4"
+                        variants={itemVariants}
+                    >
+                        {[
+                            { href: 'https://unstop.com/p/campus-quest-vivekananda-institute-of-professional-studies-vips-delhi-1392453', text: 'Registration Form' },
+                            { href: 'https://docs.google.com/document/d/1jRw622S68syOhtQNSm8KNurKe23yFqbe/edit?usp=sharing&ouid=105713651815631722856&rtpof=true&sd=true', text: 'Event Details' }
+                        ].map((link, i) => (
+                            <Link key={i} href={link.href} passHref>
+                                <motion.button
+                                    whileHover={{ y: -2 }}
+                                    className="w-full bg-cyan-700/80 text-white py-3 px-6 rounded-xl text-lg font-semibold text-center hover:bg-cyan-600 transition-all border border-cyan-400/30 hover:border-cyan-400/50 shadow-lg hover:shadow-cyan-500/20"
+                                >
+                                    {link.text}
+                                </motion.button>
+                            </Link>
+                        ))}
+                    </motion.div>
+                </div>
             </motion.div>
 
             {/* Custom Scrollbar Styles */}
@@ -153,22 +198,18 @@ const Page = () => {
                 ::-webkit-scrollbar {
                     width: 8px;
                 }
-
                 ::-webkit-scrollbar-track {
-                    background: #1a1a1a;
+                    background: #0a1a1f;
                     border-radius: 10px;
                 }
-
                 ::-webkit-scrollbar-thumb {
-                    background: #00ffff;
+                    background: linear-gradient(to bottom, #00ffff, #0066ff);
                     border-radius: 10px;
-                    border: 2px solid #1a1a1a;
+                    border: 2px solid #0a1a1f;
                 }
-
                 ::-webkit-scrollbar-thumb:hover {
-                    background: #00cccc;
+                    background: linear-gradient(to bottom, #00cccc, #0055cc);
                 }
-
                 @media (max-width: 768px) {
                     ::-webkit-scrollbar {
                         width: 4px;
