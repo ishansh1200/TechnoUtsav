@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Orbitron, Yatra_One } from "next/font/google"; // Changed font for INNO
-import GlitchText from "./GlitchText";
 
 const orbitron = Orbitron({ subsets: ["latin"], weight: ["500"] }); // New tech-style font
 const yatra = Yatra_One({ subsets: ["devanagari"], weight: "400" });
@@ -44,7 +43,7 @@ const TextBox = () => {
                             </div>
                             
                             {/* Glitch Overlay */}
-                            <GlitchText
+                            <div
                                 className={`${orbitron.className} absolute top-0 left-0 w-full h-full 
                                 text-8xl md:text-[10rem] lg:text-[12rem] font-bold text-transparent 
                                 bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400 opacity-70`}
