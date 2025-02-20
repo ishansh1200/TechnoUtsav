@@ -1,4 +1,5 @@
 "use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { links } from "../../lib/data";
 import React, { useState, useEffect } from "react";
@@ -40,7 +41,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 w-full bg-blue-950 bg-opacity-80 backdrop-blur-md shadow-md z-[9999] transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full bg-black bg-opacity-70 backdrop-blur-md shadow-md z-[9999] transition-all duration-300 ${
         scrolling ? "shadow-lg" : ""
       }`}
       initial={{ y: -100 }}
@@ -50,10 +51,12 @@ const Navbar = () => {
       <motion.div
         className="overflow-hidden"
         animate={{ height: menuOpen ? "auto" : "4rem" }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
       >
         <div className="flex justify-between items-center px-6 md:px-10 lg:px-12 py-4 w-full max-w-7xl mx-auto">
-          <div className="text-gray-100 font-bold text-3xl">Innoवृत्ति</div>
+          <div className="text-gray-100 font-bold text-3xl">
+            Innoवृत्ति
+          </div>
 
           <div className="hidden md:flex items-center gap-10">
             {links.map((link) => (
@@ -90,7 +93,7 @@ const Navbar = () => {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="md:hidden bg-blue-950 bg-opacity-90 py-4 flex flex-col items-center gap-4 z-999"
+              className="md:hidden bg-black bg-opacity-90 py-4 flex flex-col items-center gap-4 z-999"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -118,4 +121,5 @@ const Navbar = () => {
     </motion.nav>
   );
 };
+
 export default Navbar;

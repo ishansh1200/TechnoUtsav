@@ -1,4 +1,5 @@
   "use client"
+  
   import Image from "next/image"
   import { motion } from "framer-motion"
   import { Orbitron, Audiowide } from "next/font/google"
