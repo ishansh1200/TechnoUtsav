@@ -1,10 +1,8 @@
-// EventCard.jsx
 'use client'
 
 import React from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["400", "700"] });
@@ -23,122 +21,32 @@ const eventImages = {
 
 const EventCard = ({ event }) => {
     const eventImage = eventImages[event.img];
-    const [isHovered, setIsHovered] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const rotateX = useTransform(y, [-100, 100], [15, -15]);
-    const rotateY = useTransform(x, [-100, 100], [-15, 15]);
-
-    const handleInteraction = () => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        window.sessionStorage.setItem("eventAnimating", JSON.stringify({ event: event.id, animating: true }));
-        setTimeout(() => {
-            window.location.href = event.link;
-            setIsAnimating(false);
-        }, 500);
-    };
-
-    useEffect(() => {
-        window.sessionStorage.removeItem("eventAnimating");
-        setIsAnimating(false);
-    }, []);
 
     return (
         <motion.div
-            className="relative w-[300px] h-[300px] flex items-center justify-center cursor-pointer mx-auto"
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => {
-                setIsHovered(false);
-                x.set(0);
-                y.set(0);
-            }}
-            onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                x.set(e.clientX - rect.left - rect.width / 2);
-                y.set(e.clientY - rect.top - rect.height / 2);
-            }}
-            style={{ rotateX, rotateY }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 18
-            }}
+            className="w-80 border-4 border-black bg-black/35 backdrop-blur-md p-6 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]  
+            font-sans transition-all duration-300 hover:translate-x-[-5px] hover:translate-y-[-5px] 
+            hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+            whileHover={{ scale: 1.05 }}
         >
-            {/* Card Background */}
-            <motion.div
-                className="absolute inset-0 rounded-[1.5rem] bg-black/35 backdrop-blur-2xl border border-gray-800/60"
-                animate={{
-                    scale: isHovered ? 1.05 : 1,
-                }}
-            />
-
-            {/* Main Content */}
-            <div className="relative w-full h-full p-6 flex flex-col items-center justify-between">
-                {/* Image Container */}
-                <motion.div
-                    className="relative w-full h-48 overflow-hidden rounded-2xl"
-                    style={{
-                        x: useTransform(x, [-150, 150], [-15, 15]),
-                        y: useTransform(y, [-150, 150], [-15, 15])
-                    }}
-                    animate={{
-                        filter: isHovered ? "blur(8px)" : "blur(0px)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <Image
-                        src={eventImage}
-                        alt={event.title}
-                        fill
-                        className="object-cover brightness-90 contrast-110"
-                    />
-                </motion.div>
-
-                {/* Title */}
-                <motion.h3
-                    className={`${spaceGrotesk.className} text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent`}
-                    animate={{
-                        letterSpacing: isHovered ? "0.05em" : "0.02em",
-                        filter: isHovered ? "blur(4px)" : "blur(0px)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                >
-                    {event.title}
-                </motion.h3>
-
-                {/* Hover Content */}
-                <motion.div
-                    className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <p className="text-gray-300/85 text-sm leading-relaxed">
-                        {event.shortDescription1}
-                    </p>
-
-                    {/* Enhanced Button */}
-                    <motion.div
-                        className="w-full relative group"
-                        whileHover={{ scale: 1.05 }}
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[2px]" />
-                        <motion.button
-                            onClick={handleInteraction}
-                            disabled={isAnimating}
-                            className="w-full py-2 px-4 bg-gray-900 text-white font-semibold rounded-xl relative overflow-hidden transition-all duration-300"
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <span className="relative z-10">Join Now</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </motion.button>
-                    </motion.div>
-                </motion.div>
+            <div className="flex items-center gap-4 mb-4 border-b-2 border-black pb-4">
+                <div className="flex items-center justify-center bg-black p-2">
+                    <svg className="h-6 w-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                    </svg>
+                </div>
+                <div className="font-black text-white text-xl uppercase">{event.title}</div>
+            </div>
+            <div className={`${spaceGrotesk.className} relative w-full h-48 overflow-hidden border-2 border-black`}>
+                <Image src={eventImage} alt={event.title} fill className="object-cover brightness-90 contrast-110" />
+            </div>
+            <div className="mt-4 text-white text-lg leading-6 border-b-2 border-black pb-4 font-extrabold">
+                {event.shortDescription1}
+            </div>
+            <div className="mt-4">
+                <a href={event.link} className="block w-full text-center text-lg font-bold uppercase border-4 border-black bg-white/75 text-black relative transition-all duration-200 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] overflow-hidden mb-4 p-3 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)] hover:bg-blue-700/50 hover:border-blue-700 hover:text-white">
+                    Join Now
+                </a>
             </div>
         </motion.div>
     );
@@ -146,7 +54,7 @@ const EventCard = ({ event }) => {
 
 export const EventShowcase = ({ children }) => {
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-black/97 p-8 backdrop-blur-3xl">
+        <div className="min-h-screen w-full flex items-center justify-center bg-black/90 p-8">
             <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16"
                 initial={{ opacity: 0 }}

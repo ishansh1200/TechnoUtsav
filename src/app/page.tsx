@@ -9,18 +9,14 @@ import Balatro from "./Balatro";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black overflow-x-hidden">
       {/* Balatro Background */}
       <div className="fixed inset-0 z-0">
-        <Balatro
-          isRotate={false}
-          mouseInteraction={true}
-          pixelFilter={700}
-        />
+        <Balatro isRotate={false} mouseInteraction={true} pixelFilter={700} />
       </div>
 
       {/* Page Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         {/* Navbar */}
         <div className="fixed top-0 left-0 w-full px-4 z-50 shadow-md">
           <Navbar />
@@ -34,11 +30,17 @@ export default function Home() {
           <TextBox />
         </div>
 
-        <div className="w-full px-4 sm:px-8 flex items-center text-center" id="eventdetails">
+        <div
+          className="w-full px-4 sm:px-8 flex items-center justify-center text-center"
+          id="eventdetails"
+        >
           <Events />
         </div>
 
-        <div className="w-full px-4 sm:px-8 flex flex-col" id="sponsors">
+        <div
+          className="w-full px-4 sm:px-8 flex flex-col items-center justify-center"
+          id="sponsors"
+        >
           <Sponsors />
         </div>
 

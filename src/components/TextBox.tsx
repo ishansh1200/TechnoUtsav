@@ -38,16 +38,15 @@ const TextBox = () => {
                         <div className="relative inline-block">
                             {/* Solid Text Base */}
                             <div className={`${orbitron.className} text-8xl md:text-[10rem] lg:text-[12rem]
-                            font-bold text-white text-opacity-95 tracking-tighter 
+                            font-bold text-white text-opacity-95 tracking-tight 
                             drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]`}>
                                 INNO
                             </div>
 
-                            {/* Glitch Overlay */}
                             <div
                                 className={`${orbitron.className} absolute top-0 left-0 w-full h-full 
                                 text-8xl md:text-[10rem] lg:text-[12rem] font-bold text-transparent 
-                                bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400 opacity-70`}
+                                bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400 opacity-60`}
                             >
                                 INNO
                             </div>

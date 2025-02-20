@@ -50,7 +50,7 @@ function Events() {
             <div 
               key={`row-${rowIndex}`}
               className={`
-                grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
+                grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 -translate-x-10
                 gap-x-12 gap-y-16 sm:gap-x-16 sm:gap-y-20 lg:gap-x-24 lg:gap-y-24
                 ${rowEvents.length < 4 ? 'lg:flex lg:justify-center' : ''}
               `}
